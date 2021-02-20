@@ -1,0 +1,6 @@
+framework module Pods_CameraShy {
+  umbrella header "Pods-CameraShy-umbrella.h"
+
+  export *
+  module * { export * }
+}
