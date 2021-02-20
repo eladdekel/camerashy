@@ -12,6 +12,7 @@ class Singleton {
     
     static let shared = Singleton()
     var teamName: String?
+    var gameID: String?
     
     
 }

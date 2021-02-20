@@ -12,3 +12,23 @@ struct User {
     var name: String
     var location: CLLocationCoordinate2D
 }
+
+
+
+struct GeoData {
+    let lat: Float
+    let long: Float
+    let rad: Float
+    let bound: [Float]
+    
+    
+}
+
+
+struct Again {
+    let cords: CLLocationCoordinate2D
+    let zoom: MKCoordinateSpan
+    let range: CLLocationDistance
+
+    
+}

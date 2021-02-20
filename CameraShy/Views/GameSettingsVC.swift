@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import Alamofire
 
 class GameSettingsVC: UIViewController, PassingDataBack {
 
@@ -37,7 +38,8 @@ class GameSettingsVC: UIViewController, PassingDataBack {
     @IBOutlet weak var doneButton: UIButton!
     var codesForGeo: CLLocationCoordinate2D?
     var gameName: String = ""
-
+    var geoGo: Again?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UISetup()
@@ -110,14 +112,44 @@ class GameSettingsVC: UIViewController, PassingDataBack {
         print(zoom)
         print(range)
         
-        // CORDS - CENTER OF MAP
-        // ZOOM - DISTANCE OF CAMERA SHOWN
+        
+        let test = Again(cords: cords, zoom: zoom, range: range)
+        geoGo = test
+   
+    }
+    
+    func checkApple() -> String {
+        
+        return("test")
     }
     
     
     @IBAction func doneButton(_ sender: Any) {
-        if codesForGeo != nil {
+        if geoGo != nil {
             // SAVE AND SEND DATA TO SERVER
+            
+            let parameters: Parameters = [
+                "appleId": checkApple(),
+                "numPlayers": playerStepper.value,
+                "time": "\(timeStepper.value)",
+                "Timestamp": "",
+                "gfence": [
+                    "lat":geoGo!.cords.latitude,
+                    "long":geoGo!.cords.longitude,
+                    "rad":geoGo!.range,
+                    "bound":[geoGo!.zoom.latitudeDelta, geoGo?.zoom.longitudeDelta]
+                ]
+                
+             ]
+
+            
+            AF.request("http://camera-shy.space/api/createGame", method: .post, parameters: parameters).response {
+                response in
+                print(response)
+                
+            }
+            // CALL THE NEXT VIEW WITH THE NEW DATA
+            // DISMISS?
             
             
         } else {
