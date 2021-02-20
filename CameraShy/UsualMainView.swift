@@ -11,6 +11,8 @@ import SwiftUI
 struct UsualMainView: View {
     @State var code = ""
     @State var hideHost = false
+    @State private var isPresented = false
+
 
     var body: some View {
         ZStack {
@@ -98,7 +100,7 @@ struct UsualMainView: View {
                     .clipShape(Capsule())
                     
                     Button(action: {
-                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeAdapter") as? WelcomeAdapter
+                        self.isPresented = true
                         
                         
                         
@@ -119,7 +121,9 @@ struct UsualMainView: View {
 
                     .clipShape(Capsule())
                     .padding(.bottom, 5)
-
+                    .sheet(isPresented: $isPresented, content: {
+                        VCSwiftUIView()
+                    })
                 }
                 Spacer()
             }
