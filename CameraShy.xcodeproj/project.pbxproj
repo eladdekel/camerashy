@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		755C0D9B25E18D9900C9D6BF /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9625E18D9900C9D6BF /* MainContainerView.swift */; };
+		755C0D9C25E18D9900C9D6BF /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9725E18D9900C9D6BF /* Welcome.swift */; };
+		755C0D9D25E18D9900C9D6BF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9825E18D9900C9D6BF /* Profile.swift */; };
+		755C0D9E25E18D9900C9D6BF /* UsualMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9925E18D9900C9D6BF /* UsualMainView.swift */; };
+		755C0D9F25E18D9900C9D6BF /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9A25E18D9900C9D6BF /* SignUp.swift */; };
+		755C0DA325E18DE300C9D6BF /* WelcomeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0DA225E18DE300C9D6BF /* WelcomeAdapter.swift */; };
+		755C0DA725E18E8700C9D6BF /* UsualAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0DA625E18E8700C9D6BF /* UsualAdapter.swift */; };
 		75A2570225E0ACFE008DD441 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2570125E0ACFE008DD441 /* AppDelegate.swift */; };
 		75A2570425E0ACFE008DD441 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2570325E0ACFE008DD441 /* SceneDelegate.swift */; };
 		75A2570625E0ACFE008DD441 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2570525E0ACFE008DD441 /* ViewController.swift */; };
@@ -54,6 +61,13 @@
 		12543426300CDA7C0B48B0D4 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		31C6AF0773C2B804BAFB9D5B /* Pods-CameraShy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraShy.release.xcconfig"; path = "Target Support Files/Pods-CameraShy/Pods-CameraShy.release.xcconfig"; sourceTree = "<group>"; };
 		755C0D8F25E183C900C9D6BF /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		755C0D9625E18D9900C9D6BF /* MainContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
+		755C0D9725E18D9900C9D6BF /* Welcome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
+		755C0D9825E18D9900C9D6BF /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		755C0D9925E18D9900C9D6BF /* UsualMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsualMainView.swift; sourceTree = "<group>"; };
+		755C0D9A25E18D9900C9D6BF /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		755C0DA225E18DE300C9D6BF /* WelcomeAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeAdapter.swift; sourceTree = "<group>"; };
+		755C0DA625E18E8700C9D6BF /* UsualAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsualAdapter.swift; sourceTree = "<group>"; };
 		75A256FE25E0ACFE008DD441 /* CameraShy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraShy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A2570125E0ACFE008DD441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75A2570325E0ACFE008DD441 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,11 +154,18 @@
 				75A2570F25E0ACFF008DD441 /* LaunchScreen.storyboard */,
 				75A2571225E0ACFF008DD441 /* Info.plist */,
 				75A2570A25E0ACFE008DD441 /* CameraShy.xcdatamodeld */,
+				755C0D9625E18D9900C9D6BF /* MainContainerView.swift */,
+				755C0D9825E18D9900C9D6BF /* Profile.swift */,
+				755C0D9A25E18D9900C9D6BF /* SignUp.swift */,
+				755C0D9925E18D9900C9D6BF /* UsualMainView.swift */,
+				755C0D9725E18D9900C9D6BF /* Welcome.swift */,
 				75E4144725E0BCD7004A7839 /* GameCreationVC.swift */,
 				75E4144B25E0C354004A7839 /* GameSettingsVC.swift */,
 				75E4144E25E0CCD6004A7839 /* GameLocPickVC.swift */,
 				75DD383125E1693F00187366 /* GameMechVC.swift */,
 				75DD383425E17B6C00187366 /* Users.swift */,
+				755C0DA225E18DE300C9D6BF /* WelcomeAdapter.swift */,
+				755C0DA625E18E8700C9D6BF /* UsualAdapter.swift */,
 			);
 			path = CameraShy;
 			sourceTree = "<group>";
@@ -336,14 +357,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				75A2570625E0ACFE008DD441 /* ViewController.swift in Sources */,
+				755C0D9D25E18D9900C9D6BF /* Profile.swift in Sources */,
+				755C0D9C25E18D9900C9D6BF /* Welcome.swift in Sources */,
 				75DD383525E17B6C00187366 /* Users.swift in Sources */,
 				75A2570225E0ACFE008DD441 /* AppDelegate.swift in Sources */,
 				75E4144F25E0CCD6004A7839 /* GameLocPickVC.swift in Sources */,
 				75DD383225E1693F00187366 /* GameMechVC.swift in Sources */,
+				755C0D9F25E18D9900C9D6BF /* SignUp.swift in Sources */,
+				755C0DA725E18E8700C9D6BF /* UsualAdapter.swift in Sources */,
 				75A2570425E0ACFE008DD441 /* SceneDelegate.swift in Sources */,
+				755C0D9E25E18D9900C9D6BF /* UsualMainView.swift in Sources */,
 				75E4144825E0BCD7004A7839 /* GameCreationVC.swift in Sources */,
+				755C0D9B25E18D9900C9D6BF /* MainContainerView.swift in Sources */,
 				75A2570C25E0ACFE008DD441 /* CameraShy.xcdatamodeld in Sources */,
 				75E4144C25E0C354004A7839 /* GameSettingsVC.swift in Sources */,
+				755C0DA325E18DE300C9D6BF /* WelcomeAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

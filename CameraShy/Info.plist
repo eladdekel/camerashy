@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>CameraShy needs this permission so that your friends&apos; devices can recognize who they are playing with.</string>
 	<key>OneSignal_app_groups_key</key>
 	<string>group.studio.palmtree.camerashy.onesignal</string>
 	<key>CFBundleDevelopmentRegion</key>

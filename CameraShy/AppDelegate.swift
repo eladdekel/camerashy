@@ -12,6 +12,21 @@ import OneSignal
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window : UIWindow?
+    
+
+    func isAppAlreadyLaunchedOnce() -> Bool {
+        let defaults = UserDefaults.standard
+        if let _ = defaults.string(forKey: "isAppAlreadyConfigured") {
+            print("App already launched")
+            return true
+        } else {
+            
+            return false
+        }
+    }
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Remove this method to stop OneSignal Debugging
@@ -27,6 +42,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            print("User accepted notifications: \(accepted)")
          })
         
+        self.window = UIWindow()
+        
+        if UserDefaults.standard.bool(forKey: "isAppAlreadyConfigured") {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UsualAdapter") as? UsualAdapter else {
+                fatalError("Could not instantiate HomeVC!")
+            }
+           
+            
+        } else {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeAdapter") as? WelcomeAdapter else {
+                fatalError("Could not instantiate IntroductionVC!")
+            }
+            window?.rootViewController = vc
+        }
+
+        window?.makeKeyAndVisible()
         // Override point for customization after application launch.
         return true
     }
