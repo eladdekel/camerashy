@@ -28,6 +28,7 @@ class GameLocPickVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         doneButton.layer.cornerRadius = 20
         locationManager.delegate = self
         radiusSlider.minimumValue = 100

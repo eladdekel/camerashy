@@ -8,7 +8,9 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GameEndedDelegate {
+
+    
     
     let locationManager = CLLocationManager()
 
@@ -21,6 +23,18 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    func gameEnded(_ players: Double, _ time: String, _ kills: Double) {
+        // PRESENT WITH INFO
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gameBegan" {
+            let destvc = segue.destination as! GameMechVC
+            destvc.delegate = self
+            
+            
+        }
+    }
+    
 }
 

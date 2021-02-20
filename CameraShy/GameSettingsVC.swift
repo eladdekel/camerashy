@@ -45,6 +45,8 @@ class GameSettingsVC: UIViewController, PassingDataBack {
     }
     
     func UISetup() {
+        self.navigationController?.isNavigationBarHidden = true
+
         mainView.backgroundColor = UIColor(named: "MediumBlue")
         mapView.layer.cornerRadius = 20
         gameTitle.text = gameName

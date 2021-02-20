@@ -10,6 +10,10 @@ import CoreLocation
 import SwiftLocation
 import MapKit
 
+protocol GameEndedDelegate {
+    func gameEnded(_ players: Double,_ time: String,_ kills: Double)
+}
+
 class GameMechVC: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var bottomView: UIView!
@@ -22,7 +26,7 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     var seconds: Double = 0
     var isTimerRunning = false
     var timer = Timer()
-
+    var delegate: GameEndedDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,7 +168,30 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
   
         
     }
+    
+    
+    // MARK: - GameUpdated Func
+    
+    func gameUpdate(players: Double, time: Double) {
+        
+        
+        
+    }
+    
  
+
+
+// MARK: - PlayerLoss
+
+func playerLoss() {
+    // TELLS THEM THEY LOST, THEIR PLACE, TIME, KILLS
+ 
+    
+ //   delegate?.gameEnded(players, timeString(time: seconds), kills)
+   dismiss(animated: true)
+    
+    
+}
 }
 
 extension UIView {
