@@ -1,20 +1,27 @@
 PODS:
   - Alamofire (5.4.0)
   - SPAlert (3.0.3)
+  - SwiftLocation/BeaconBroadcaster (5.1.0):
+    - SwiftLocation/Core
+  - SwiftLocation/Core (5.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - SPAlert
+  - SwiftLocation/BeaconBroadcaster
+  - SwiftLocation/Core
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - SPAlert
+    - SwiftLocation
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   SPAlert: f01599d5224e93547cbb9364b2c42e88074644b9
+  SwiftLocation: 83e0ea75a1969cee3a1197e2b7095603fc23fde5
 
-PODFILE CHECKSUM: c923af01ebf172e648e9f475c17861661b6f69e1
+PODFILE CHECKSUM: 611530cd8e5de40e73660b557f934b20bd4b4e40
 
 COCOAPODS: 1.10.0

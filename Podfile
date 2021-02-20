@@ -9,7 +9,8 @@ target 'CameraShy' do
 
 pod 'Alamofire', '~> 5.2'
 pod 'SPAlert'
-
+pod 'SwiftLocation/Core'
+pod 'SwiftLocation/BeaconBroadcaster'
 
 
 end

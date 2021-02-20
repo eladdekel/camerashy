@@ -14,6 +14,9 @@
 		75A2570C25E0ACFE008DD441 /* CameraShy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 75A2570A25E0ACFE008DD441 /* CameraShy.xcdatamodeld */; };
 		75A2570E25E0ACFF008DD441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A2570D25E0ACFF008DD441 /* Assets.xcassets */; };
 		75A2571125E0ACFF008DD441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A2570F25E0ACFF008DD441 /* LaunchScreen.storyboard */; };
+		75E4144825E0BCD7004A7839 /* GameCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4144725E0BCD7004A7839 /* GameCreationVC.swift */; };
+		75E4144C25E0C354004A7839 /* GameSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4144B25E0C354004A7839 /* GameSettingsVC.swift */; };
+		75E4144F25E0CCD6004A7839 /* GameLocPickVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4144E25E0CCD6004A7839 /* GameLocPickVC.swift */; };
 		ADEE65A2AA16640EE60569F6 /* Pods_CameraShy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD4A94B7F1D3AB0004B2B80 /* Pods_CameraShy.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,10 @@
 		75A2570D25E0ACFF008DD441 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A2571025E0ACFF008DD441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75A2571225E0ACFF008DD441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75E4144725E0BCD7004A7839 /* GameCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCreationVC.swift; sourceTree = "<group>"; };
+		75E4144B25E0C354004A7839 /* GameSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettingsVC.swift; sourceTree = "<group>"; };
+		75E4144E25E0CCD6004A7839 /* GameLocPickVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLocPickVC.swift; sourceTree = "<group>"; };
+		75E4145125E0CD07004A7839 /* CameraShy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CameraShy.entitlements; sourceTree = "<group>"; };
 		ACD4A94B7F1D3AB0004B2B80 /* Pods_CameraShy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CameraShy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56E014228DD61D3B7F45663 /* Pods-CameraShy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraShy.debug.xcconfig"; path = "Target Support Files/Pods-CameraShy/Pods-CameraShy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +81,7 @@
 		75A2570025E0ACFE008DD441 /* CameraShy */ = {
 			isa = PBXGroup;
 			children = (
+				75E4145125E0CD07004A7839 /* CameraShy.entitlements */,
 				75A2570125E0ACFE008DD441 /* AppDelegate.swift */,
 				75A2570325E0ACFE008DD441 /* SceneDelegate.swift */,
 				75A2570525E0ACFE008DD441 /* ViewController.swift */,
@@ -82,6 +90,9 @@
 				75A2570F25E0ACFF008DD441 /* LaunchScreen.storyboard */,
 				75A2571225E0ACFF008DD441 /* Info.plist */,
 				75A2570A25E0ACFE008DD441 /* CameraShy.xcdatamodeld */,
+				75E4144725E0BCD7004A7839 /* GameCreationVC.swift */,
+				75E4144B25E0C354004A7839 /* GameSettingsVC.swift */,
+				75E4144E25E0CCD6004A7839 /* GameLocPickVC.swift */,
 			);
 			path = CameraShy;
 			sourceTree = "<group>";
@@ -210,8 +221,11 @@
 			files = (
 				75A2570625E0ACFE008DD441 /* ViewController.swift in Sources */,
 				75A2570225E0ACFE008DD441 /* AppDelegate.swift in Sources */,
+				75E4144F25E0CCD6004A7839 /* GameLocPickVC.swift in Sources */,
 				75A2570425E0ACFE008DD441 /* SceneDelegate.swift in Sources */,
+				75E4144825E0BCD7004A7839 /* GameCreationVC.swift in Sources */,
 				75A2570C25E0ACFE008DD441 /* CameraShy.xcdatamodeld in Sources */,
+				75E4144C25E0C354004A7839 /* GameSettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +373,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CameraShy/CameraShy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GD766HXV63;
 				INFOPLIST_FILE = CameraShy/Info.plist;
@@ -379,6 +394,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CameraShy/CameraShy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GD766HXV63;
 				INFOPLIST_FILE = CameraShy/Info.plist;
