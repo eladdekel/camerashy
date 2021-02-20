@@ -39,6 +39,8 @@ class GameLocPickVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         locationManager.startUpdatingLocation()
         setMapview()
         doneButton.setTitle("Select", for: .normal)
+        errorLabel.text = "Hold your finger on the spot you wish to be the centre of the game. Then, use the slider to select an arena size."
+
     }
     
     // MARK: - Completed Button

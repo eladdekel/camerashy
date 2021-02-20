@@ -247,10 +247,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjX-oC-bn0">
-                                                <rect key="frame" x="48" y="67" width="319" height="42"/>
+                                                <rect key="frame" x="48" y="67" width="319" height="61"/>
                                                 <subviews>
                                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ngj-68-niO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="319" height="42"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="319" height="61"/>
                                                     </mapView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -265,9 +265,9 @@
                                         <constraints>
                                             <constraint firstItem="qjX-oC-bn0" firstAttribute="top" secondItem="5F5-a2-Qka" secondAttribute="bottom" constant="16" id="1UA-bA-Q5A"/>
                                             <constraint firstItem="5F5-a2-Qka" firstAttribute="top" secondItem="b2a-Jl-BmU" secondAttribute="top" constant="15" id="Nbp-u6-s3q"/>
+                                            <constraint firstAttribute="bottom" secondItem="qjX-oC-bn0" secondAttribute="bottom" constant="1" id="OR0-Wo-xS4"/>
                                             <constraint firstAttribute="trailing" secondItem="qjX-oC-bn0" secondAttribute="trailing" constant="47" id="TtO-s1-DmG"/>
                                             <constraint firstItem="qjX-oC-bn0" firstAttribute="leading" secondItem="b2a-Jl-BmU" secondAttribute="leading" constant="48" id="Z2j-cV-Uow"/>
-                                            <constraint firstAttribute="bottom" secondItem="qjX-oC-bn0" secondAttribute="bottom" constant="20" symbolic="YES" id="aV3-DJ-IAe"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="5F5-a2-Qka" secondAttribute="trailing" constant="190" id="kuG-v3-yHw"/>
                                             <constraint firstItem="5F5-a2-Qka" firstAttribute="leading" secondItem="b2a-Jl-BmU" secondAttribute="leading" constant="22" id="uwa-Yu-TAO"/>
                                         </constraints>
@@ -295,6 +295,13 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgE-Aq-nme">
+                                <rect key="frame" x="77" y="188" width="261" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rT0-CG-zbG"/>
                         <color key="backgroundColor" name="MediumBlue"/>
@@ -315,6 +322,7 @@
                     <navigationItem key="navigationItem" id="Xaa-eG-S1n"/>
                     <connections>
                         <outlet property="doneButton" destination="Zbo-kg-uhX" id="9gq-Zf-b9j"/>
+                        <outlet property="errorLabel" destination="bgE-Aq-nme" id="KDK-B9-JLV"/>
                         <outlet property="gameNameLabel" destination="K5U-cc-0s3" id="e48-fc-dte"/>
                         <outlet property="gameTitle" destination="K5U-cc-0s3" id="F40-05-9mj"/>
                         <outlet property="mainView" destination="qQT-uU-DFM" id="cb2-GU-q9d"/>
@@ -359,7 +367,7 @@
                                     <action selector="doneButtonPress:" destination="fAk-H1-0sY" eventType="touchUpInside" id="lEr-xu-mYt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The area shown within the map will be the arena." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="IcC-Hp-dQL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The area shown within the map will be the arena." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="IcC-Hp-dQL">
                                 <rect key="frame" x="23" y="764" width="369" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IcC-Hp-dQL" secondAttribute="height" multiplier="123:7" id="DhT-1k-zIw"/>
@@ -394,6 +402,7 @@
                             <constraint firstItem="IcC-Hp-dQL" firstAttribute="leading" secondItem="BcW-HS-fek" secondAttribute="leading" constant="23" id="mlZ-2A-sln"/>
                             <constraint firstItem="rhq-DT-wdt" firstAttribute="leading" secondItem="BcW-HS-fek" secondAttribute="leading" id="oWP-i1-n6A"/>
                             <constraint firstItem="53e-vX-gb9" firstAttribute="top" secondItem="rhq-DT-wdt" secondAttribute="bottom" constant="97" id="r3B-0y-Mj8"/>
+                            <constraint firstItem="BcW-HS-fek" firstAttribute="trailing" secondItem="IcC-Hp-dQL" secondAttribute="trailing" constant="22" id="rfz-EI-2gt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t4z-tH-Cyf"/>

@@ -14,6 +14,7 @@ class GameSettingsVC: UIViewController, PassingDataBack {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var gameTitle: UILabel!
     
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var timeBack: UIView!
     @IBOutlet weak var timeTitle: UILabel!
     @IBOutlet weak var timeLimitLabel: UILabel!
@@ -68,7 +69,7 @@ class GameSettingsVC: UIViewController, PassingDataBack {
         timeStepper.backgroundColor = UIColor(named: "ButtonColor")
         doneButton.layer.cornerRadius = 20
         mapKitV.isUserInteractionEnabled = false
-        
+        errorLabel.text = ""
     }
     
     @IBAction func timeStepperAction(_ sender: Any) {
@@ -107,6 +108,10 @@ class GameSettingsVC: UIViewController, PassingDataBack {
     @IBAction func doneButton(_ sender: Any) {
         if codesForGeo != nil {
             // SAVE AND SEND DATA TO SERVER
+            
+            
+        } else {
+            errorLabel.text = "Please select a location."
             
             
         }
