@@ -91,9 +91,14 @@ class GameSettingsVC: UIViewController, PassingDataBack {
         
     }
     
-    func sendData(_ cords: CLLocationCoordinate2D) {
+    func sendData(_ cords: CLLocationCoordinate2D, _ zoom: MKCoordinateSpan, _ range: CLLocationDistance) {
         mapView.backgroundColor = .blue
         print(cords)
+        print(zoom)
+        print(range)
+        
+        // CORDS - CENTER OF MAP
+        // ZOOM - DISTANCE OF CAMERA SHOWN
     }
     
     
