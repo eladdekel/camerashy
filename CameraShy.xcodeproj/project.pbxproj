@@ -14,9 +14,11 @@
 		75A2570C25E0ACFE008DD441 /* CameraShy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 75A2570A25E0ACFE008DD441 /* CameraShy.xcdatamodeld */; };
 		75A2570E25E0ACFF008DD441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A2570D25E0ACFF008DD441 /* Assets.xcassets */; };
 		75A2571125E0ACFF008DD441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A2570F25E0ACFF008DD441 /* LaunchScreen.storyboard */; };
+		ADEE65A2AA16640EE60569F6 /* Pods_CameraShy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD4A94B7F1D3AB0004B2B80 /* Pods_CameraShy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31C6AF0773C2B804BAFB9D5B /* Pods-CameraShy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraShy.release.xcconfig"; path = "Target Support Files/Pods-CameraShy/Pods-CameraShy.release.xcconfig"; sourceTree = "<group>"; };
 		75A256FE25E0ACFE008DD441 /* CameraShy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraShy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A2570125E0ACFE008DD441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75A2570325E0ACFE008DD441 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		75A2570D25E0ACFF008DD441 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A2571025E0ACFF008DD441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75A2571225E0ACFF008DD441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACD4A94B7F1D3AB0004B2B80 /* Pods_CameraShy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CameraShy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C56E014228DD61D3B7F45663 /* Pods-CameraShy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraShy.debug.xcconfig"; path = "Target Support Files/Pods-CameraShy/Pods-CameraShy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADEE65A2AA16640EE60569F6 /* Pods_CameraShy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C4D1218D7F786A7668B0C00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C56E014228DD61D3B7F45663 /* Pods-CameraShy.debug.xcconfig */,
+				31C6AF0773C2B804BAFB9D5B /* Pods-CameraShy.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		75A256F525E0ACFE008DD441 = {
 			isa = PBXGroup;
 			children = (
 				75A2570025E0ACFE008DD441 /* CameraShy */,
 				75A256FF25E0ACFE008DD441 /* Products */,
+				2C4D1218D7F786A7668B0C00 /* Pods */,
+				D6F3BB90F64A67A45FF196C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +87,14 @@
 			path = CameraShy;
 			sourceTree = "<group>";
 		};
+		D6F3BB90F64A67A45FF196C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACD4A94B7F1D3AB0004B2B80 /* Pods_CameraShy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75A2571525E0ACFF008DD441 /* Build configuration list for PBXNativeTarget "CameraShy" */;
 			buildPhases = (
+				E3D6191F1C8480654895D920 /* [CP] Check Pods Manifest.lock */,
 				75A256FA25E0ACFE008DD441 /* Sources */,
 				75A256FB25E0ACFE008DD441 /* Frameworks */,
 				75A256FC25E0ACFE008DD441 /* Resources */,
+				CCF11A02FCC189F920367EB0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -134,6 +161,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CCF11A02FCC189F920367EB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CameraShy/Pods-CameraShy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CameraShy/Pods-CameraShy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CameraShy/Pods-CameraShy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3D6191F1C8480654895D920 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CameraShy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		75A256FA25E0ACFE008DD441 /* Sources */ = {
@@ -287,6 +356,7 @@
 		};
 		75A2571625E0ACFF008DD441 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C56E014228DD61D3B7F45663 /* Pods-CameraShy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +376,7 @@
 		};
 		75A2571725E0ACFF008DD441 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31C6AF0773C2B804BAFB9D5B /* Pods-CameraShy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
