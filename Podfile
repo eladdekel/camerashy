@@ -8,6 +8,7 @@ target 'CameraShy' do
   # Pods for CameraShy
 
 pod 'Alamofire', '~> 5.2'
+pod 'SPAlert'
 
 
 
