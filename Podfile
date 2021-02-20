@@ -11,6 +11,15 @@ pod 'Alamofire', '~> 5.2'
 pod 'SPAlert'
 pod 'SwiftLocation/Core'
 pod 'SwiftLocation/BeaconBroadcaster'
+  pod 'OneSignal', '>= 3.0.0', '< 4.0'
 
 
+end
+
+target 'OneSignalNotificationServiceExtension' do
+use_frameworks!
+
+
+  #only copy below line
+  pod 'OneSignal', '>= 3.0.0', '< 4.0'
 end
