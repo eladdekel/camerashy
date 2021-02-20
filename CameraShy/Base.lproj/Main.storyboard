@@ -42,7 +42,7 @@
         <!--Game CreationVC-->
         <scene sceneID="Gth-O2-o8i">
             <objects>
-                <viewController id="XTx-1y-aHQ" customClass="GameCreationVC" customModule="CameraShy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameCreate" id="XTx-1y-aHQ" customClass="GameCreationVC" customModule="CameraShy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hyM-2C-Ioi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
