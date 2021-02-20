@@ -32,6 +32,11 @@ class GameLocPickVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     @IBAction func doneButtonPress(_ sender: Any) {
+        
+        // HAVE TO GET THE ZOOM OF THE CAMERA, THEN WE'LL KNOW
+        // CAN THEY DRAW IT?
+        
+        
         let coordinates = mapView.centerCoordinate
         delegate?.sendData(coordinates)
         dismiss(animated: true)
