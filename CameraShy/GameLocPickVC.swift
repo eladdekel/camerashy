@@ -24,7 +24,7 @@ class GameLocPickVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        doneButton.layer.cornerRadius = 20
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         addRegion()

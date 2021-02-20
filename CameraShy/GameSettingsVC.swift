@@ -14,21 +14,26 @@ class GameSettingsVC: UIViewController, PassingDataBack {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var gameTitle: UILabel!
     
+    @IBOutlet weak var timeBack: UIView!
     @IBOutlet weak var timeTitle: UILabel!
     @IBOutlet weak var timeLimitLabel: UILabel!
     @IBOutlet weak var timeStepper: UIStepper!
     @IBOutlet weak var gameNameLabel: UILabel!
     
     
+    @IBOutlet weak var playerBack: UIView!
     @IBOutlet weak var playerTitle: UILabel!
     @IBOutlet weak var playerLimitLabel: UILabel!
     @IBOutlet weak var playerStepper: UIStepper!
     
     
+    @IBOutlet weak var mapBack: UIView!
     @IBOutlet weak var mapTitle: UILabel!
     @IBOutlet weak var mapView: UIView!
+    @IBOutlet weak var mapKitV: MKMapView!
     
     
+    @IBOutlet weak var doneButton: UIButton!
     var codesForGeo: CLLocationCoordinate2D?
     var gameName: String = ""
 
@@ -55,6 +60,13 @@ class GameSettingsVC: UIViewController, PassingDataBack {
         let mapTapped = UITapGestureRecognizer(target: self, action: #selector(mapTappedFunc(gesture:)))
         mapView.addGestureRecognizer(mapTapped)
         mapView.isUserInteractionEnabled = true
+        mapView.backgroundColor = UIColor.clear
+        mapKitV.layer.cornerRadius = 20
+        playerStepper.backgroundColor = UIColor(named: "ButtonColor")
+        timeStepper.backgroundColor = UIColor(named: "ButtonColor")
+        doneButton.layer.cornerRadius = 20
+        mapKitV.isUserInteractionEnabled = false
+        
     }
     
     @IBAction func timeStepperAction(_ sender: Any) {

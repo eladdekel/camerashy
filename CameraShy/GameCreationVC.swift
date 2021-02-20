@@ -38,6 +38,8 @@ class GameCreationVC: UIViewController, UITextFieldDelegate {
         inputGameName.adjustsFontSizeToFitWidth = true
         errorLabel.text = ""
         inputGameName.placeholder = "Input Team Name Here"
+        nextButton.layer.cornerRadius = 20
+        
     }
 
     @IBAction func nextButton(_ sender: Any) {
