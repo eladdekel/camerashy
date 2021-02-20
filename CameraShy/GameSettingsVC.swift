@@ -70,6 +70,16 @@ class GameSettingsVC: UIViewController, PassingDataBack {
         doneButton.layer.cornerRadius = 20
         mapKitV.isUserInteractionEnabled = false
         errorLabel.text = ""
+        
+        if Singleton.shared.teamName != nil {
+            gameNameLabel.text = Singleton.shared.teamName
+            
+        } else {
+            gameNameLabel.text = "Settings"
+            
+        }
+        
+        
     }
     
     @IBAction func timeStepperAction(_ sender: Any) {
