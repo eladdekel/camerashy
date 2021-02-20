@@ -17,6 +17,9 @@
 		755C0DAB25E1941E00C9D6BF /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0DAA25E1941E00C9D6BF /* Connector.swift */; };
 		755C0DAF25E1A26F00C9D6BF /* SingletonFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0DAE25E1A26F00C9D6BF /* SingletonFiles.swift */; };
 		755C0DB325E1A58500C9D6BF /* CameraButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0DB225E1A58500C9D6BF /* CameraButtonView.swift */; };
+		755C0DC025E1B30D00C9D6BF /* TestingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0DBF25E1B30D00C9D6BF /* TestingVC.swift */; };
+		755C0DD225E1BC1200C9D6BF /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0DD125E1BC1200C9D6BF /* AlertView.swift */; };
+		755C0DD625E1BC1F00C9D6BF /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 755C0DD525E1BC1F00C9D6BF /* AlertView.xib */; };
 		75A2570225E0ACFE008DD441 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2570125E0ACFE008DD441 /* AppDelegate.swift */; };
 		75A2570425E0ACFE008DD441 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2570325E0ACFE008DD441 /* SceneDelegate.swift */; };
 		75A2570625E0ACFE008DD441 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2570525E0ACFE008DD441 /* ViewController.swift */; };
@@ -74,6 +77,9 @@
 		755C0DAA25E1941E00C9D6BF /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		755C0DAE25E1A26F00C9D6BF /* SingletonFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonFiles.swift; sourceTree = "<group>"; };
 		755C0DB225E1A58500C9D6BF /* CameraButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButtonView.swift; sourceTree = "<group>"; };
+		755C0DBF25E1B30D00C9D6BF /* TestingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingVC.swift; sourceTree = "<group>"; };
+		755C0DD125E1BC1200C9D6BF /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		755C0DD525E1BC1F00C9D6BF /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		75A256FE25E0ACFE008DD441 /* CameraShy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraShy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A2570125E0ACFE008DD441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75A2570325E0ACFE008DD441 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +134,38 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		755C0DC325E1B54A00C9D6BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				755C0D9625E18D9900C9D6BF /* MainContainerView.swift */,
+				755C0D9825E18D9900C9D6BF /* Profile.swift */,
+				755C0D9A25E18D9900C9D6BF /* SignUp.swift */,
+				755C0D9925E18D9900C9D6BF /* UsualMainView.swift */,
+				755C0D9725E18D9900C9D6BF /* Welcome.swift */,
+				75E4144725E0BCD7004A7839 /* GameCreationVC.swift */,
+				75E4144B25E0C354004A7839 /* GameSettingsVC.swift */,
+				75E4144E25E0CCD6004A7839 /* GameLocPickVC.swift */,
+				75DD383125E1693F00187366 /* GameMechVC.swift */,
+				755C0DBF25E1B30D00C9D6BF /* TestingVC.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		755C0DC625E1B55700C9D6BF /* Mains */ = {
+			isa = PBXGroup;
+			children = (
+				755C0DB225E1A58500C9D6BF /* CameraButtonView.swift */,
+				755C0DAA25E1941E00C9D6BF /* Connector.swift */,
+				75DD383425E17B6C00187366 /* Users.swift */,
+				755C0DA225E18DE300C9D6BF /* WelcomeAdapter.swift */,
+				755C0DA625E18E8700C9D6BF /* UsualAdapter.swift */,
+				755C0DAE25E1A26F00C9D6BF /* SingletonFiles.swift */,
+				755C0DD125E1BC1200C9D6BF /* AlertView.swift */,
+				755C0DD525E1BC1F00C9D6BF /* AlertView.xib */,
+			);
+			path = Mains;
+			sourceTree = "<group>";
+		};
 		75A256F525E0ACFE008DD441 = {
 			isa = PBXGroup;
 			children = (
@@ -160,21 +198,8 @@
 				75A2570F25E0ACFF008DD441 /* LaunchScreen.storyboard */,
 				75A2571225E0ACFF008DD441 /* Info.plist */,
 				75A2570A25E0ACFE008DD441 /* CameraShy.xcdatamodeld */,
-				755C0D9625E18D9900C9D6BF /* MainContainerView.swift */,
-				755C0DB225E1A58500C9D6BF /* CameraButtonView.swift */,
-				755C0D9825E18D9900C9D6BF /* Profile.swift */,
-				755C0D9A25E18D9900C9D6BF /* SignUp.swift */,
-				755C0D9925E18D9900C9D6BF /* UsualMainView.swift */,
-				755C0DAA25E1941E00C9D6BF /* Connector.swift */,
-				755C0D9725E18D9900C9D6BF /* Welcome.swift */,
-				75E4144725E0BCD7004A7839 /* GameCreationVC.swift */,
-				75E4144B25E0C354004A7839 /* GameSettingsVC.swift */,
-				75E4144E25E0CCD6004A7839 /* GameLocPickVC.swift */,
-				75DD383125E1693F00187366 /* GameMechVC.swift */,
-				75DD383425E17B6C00187366 /* Users.swift */,
-				755C0DA225E18DE300C9D6BF /* WelcomeAdapter.swift */,
-				755C0DA625E18E8700C9D6BF /* UsualAdapter.swift */,
-				755C0DAE25E1A26F00C9D6BF /* SingletonFiles.swift */,
+				755C0DC325E1B54A00C9D6BF /* Views */,
+				755C0DC625E1B55700C9D6BF /* Mains */,
 			);
 			path = CameraShy;
 			sourceTree = "<group>";
@@ -282,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75A2571125E0ACFF008DD441 /* LaunchScreen.storyboard in Resources */,
+				755C0DD625E1BC1F00C9D6BF /* AlertView.xib in Resources */,
 				75A2570E25E0ACFF008DD441 /* Assets.xcassets in Resources */,
 				75A2570925E0ACFE008DD441 /* Main.storyboard in Resources */,
 			);
@@ -367,6 +393,7 @@
 			files = (
 				75A2570625E0ACFE008DD441 /* ViewController.swift in Sources */,
 				755C0D9D25E18D9900C9D6BF /* Profile.swift in Sources */,
+				755C0DD225E1BC1200C9D6BF /* AlertView.swift in Sources */,
 				755C0D9C25E18D9900C9D6BF /* Welcome.swift in Sources */,
 				75DD383525E17B6C00187366 /* Users.swift in Sources */,
 				75A2570225E0ACFE008DD441 /* AppDelegate.swift in Sources */,
@@ -382,6 +409,7 @@
 				755C0DB325E1A58500C9D6BF /* CameraButtonView.swift in Sources */,
 				755C0DAB25E1941E00C9D6BF /* Connector.swift in Sources */,
 				75A2570C25E0ACFE008DD441 /* CameraShy.xcdatamodeld in Sources */,
+				755C0DC025E1B30D00C9D6BF /* TestingVC.swift in Sources */,
 				75E4144C25E0C354004A7839 /* GameSettingsVC.swift in Sources */,
 				755C0DA325E18DE300C9D6BF /* WelcomeAdapter.swift in Sources */,
 			);

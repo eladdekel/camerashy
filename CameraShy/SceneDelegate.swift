@@ -21,21 +21,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window.windowScene = windowScene
 
-//        if UserDefaults.standard.bool(forKey: "isAppAlreadyConfigured") {
-//            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UsualAdapter") as? UsualAdapter else {
-//                fatalError("Could not instantiate HomeVC!")
-//            }
-//            window.rootViewController = vc
-//        } else {
-//            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeAdapter") as? WelcomeAdapter else {
-//                fatalError("Could not instantiate IntroductionVC!")
-//            }
-//            window.rootViewController = vc
-//        }
-//
-//        self.window = window
-//
-//        window.makeKeyAndVisible()
+        if UserDefaults.standard.bool(forKey: "isAppAlreadyConfigured") {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UsualAdapter") as? UsualAdapter else {
+                fatalError("Could not instantiate HomeVC!")
+            }
+            window.rootViewController = vc
+        } else {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeAdapter") as? WelcomeAdapter else {
+                fatalError("Could not instantiate IntroductionVC!")
+            }
+            window.rootViewController = vc
+        }
+
+        self.window = window
+
+        window.makeKeyAndVisible()
         
         
         

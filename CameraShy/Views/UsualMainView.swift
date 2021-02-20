@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-
+import Foundation
 
 struct UsualMainView: View {
     @State var code = ""
-    @State var hideHost = false
+    @State var teamName = ""
     @State private var isPresented = false
 
 
@@ -74,9 +74,7 @@ struct UsualMainView: View {
                             .cornerRadius(15)
                             .padding(.horizontal, 20)
                             .foregroundColor(.white)
-                            .onTapGesture {
-                                self.hideHost.toggle()
-                            }
+                     
                         }
                     .padding(.horizontal, 30)
                     Button(action: {
@@ -85,7 +83,7 @@ struct UsualMainView: View {
                         HStack {
                             Image(systemName: "person.3.fill")
                                 .resizable()
-                                .frame(width: 28, height: 15)
+                                .frame(width: 28, height: 13)
                                 .foregroundColor(.white)
                                 
                             
@@ -99,6 +97,40 @@ struct UsualMainView: View {
                     .background(Color("ButtonColor"))
                     .clipShape(Capsule())
                     
+                    
+                }
+                Divider()
+                VStack {
+                    
+                    HStack {
+                        Image(systemName: "plus.bubble.fill")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                            .padding(.leading, 20)
+
+                        Text("Host a Game")
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 5)
+                        Spacer()
+
+                    }
+                    .padding(.top, 15)
+                    
+                    VStack {
+                        TextField("Enter Room Name", text: $teamName)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                            .background(Color("LightBlue"))
+                            .cornerRadius(15)
+                            .padding(.horizontal, 20)
+                            .foregroundColor(.white)
+                     
+                        }
+                    .padding(.horizontal, 30)
+                    
                     Button(action: {
                         self.isPresented = true
                         
@@ -106,11 +138,11 @@ struct UsualMainView: View {
                         
                     }) {
                         HStack {
-                            Image(systemName: "person.badge.plus")
+                            Image(systemName: "pencil")
                                 .resizable()
                                 .frame(width: 22, height: 20)
                                 .foregroundColor(.white)
-                            Text("Host a Game")
+                            Text("Create Room")
                                 .font(.system(size: 16, weight: .bold, design: .rounded))
                                 .foregroundColor(.white)
                         }
@@ -144,7 +176,7 @@ struct UsualMainView: View {
                         .padding(.top, 5)
                     Spacer()
                    
-                    NavigationLink(destination: MainContainerView()){
+                    NavigationLink(destination: CameraButton()){
                         HStack {
                             Image(systemName: "gear")
                                 .resizable()
@@ -170,7 +202,16 @@ struct UsualMainView: View {
         .onTapGesture {
             UIApplication.shared.endEditing()
         }
+        .onChange(of: teamName) { name in
+            Singleton.shared.teamName = name
+            
+            print(Singleton.shared.teamName)
+        }
     }
+}
+
+class ContentViewDelegate: ObservableObject {
+    @Published var delegate : String = ""
 }
 
 extension UIApplication {
@@ -184,22 +225,4 @@ struct UsualMainView_Previews: PreviewProvider {
     static var previews: some View {
         UsualMainView()
     }
-}
-
-struct ViewControllerRepresentation: UIViewControllerRepresentable {
-
-  func makeUIViewController(
-    context: UIViewControllerRepresentableContext
-    <ViewControllerRepresentation>) -> ViewController {
-    UIStoryboard(name: "Main", bundle: nil)
-      .instantiateViewController(
-        withIdentifier: "GameSetup") as! ViewController
-  }
-
-  func updateUIViewController(
-    _ uiViewController: ViewController,
-    context: UIViewControllerRepresentableContext
-    <ViewControllerRepresentation>) {
-
-  }
 }

@@ -17,13 +17,56 @@
                     <view key="view" contentMode="scaleToFill" id="MNe-08-hvP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITy-BK-hDy" customClass="AlertView" customModule="CameraShy" customModuleProvider="target">
+                                <rect key="frame" x="63" y="199" width="289" height="307"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5km-30-tkT">
+                                        <rect key="frame" x="49" y="21" width="190" height="177"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="150"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIT-0S-ZUi">
+                                        <rect key="frame" x="185" y="55" width="30" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Better luck next time!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEy-fw-Rbb">
+                                        <rect key="frame" x="8" y="205" width="273" height="79"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="ButtonColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ITy-BK-hDy" secondAttribute="height" multiplier="289:307" id="wsd-H3-bqy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Uaa-ip-tvW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ITy-BK-hDy" firstAttribute="top" secondItem="Uaa-ip-tvW" secondAttribute="top" constant="155" id="MFO-sF-var"/>
+                            <constraint firstItem="Uaa-ip-tvW" firstAttribute="trailing" secondItem="ITy-BK-hDy" secondAttribute="trailing" constant="62" id="hgr-kr-vsz"/>
+                            <constraint firstItem="ITy-BK-hDy" firstAttribute="leading" secondItem="Uaa-ip-tvW" secondAttribute="leading" constant="63" id="nJA-fT-Ckf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="awardView" destination="ITy-BK-hDy" id="rRj-S0-K2Z"/>
+                        <outlet property="endLabel" destination="wIT-0S-ZUi" id="Xul-sA-DfZ"/>
+                        <outlet property="messageLabel" destination="QEy-fw-Rbb" id="49v-X2-aPZ"/>
+                        <outlet property="numberLabel" destination="5km-30-tkT" id="vF1-4t-Ide"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ske-36-3XG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1668" y="-552"/>
+            <point key="canvasLocation" x="-1668.1159420289857" y="-552.45535714285711"/>
         </scene>
         <!--Welcome Adapter-->
         <scene sceneID="6UH-kY-7Ue">
@@ -56,6 +99,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnF-nW-bdo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1787" y="-658"/>
+        </scene>
+        <!--TestingVC-->
+        <scene sceneID="TRK-sB-mf0">
+            <objects>
+                <viewController id="xsZ-iP-0jN" customClass="TestingVC" customModule="CameraShy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XYp-Lz-Lxg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI4-iS-lrz">
+                                <rect key="frame" x="184" y="313" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="pressButton:" destination="xsZ-iP-0jN" eventType="touchUpInside" id="nCP-Wd-URt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="a1Q-EC-BbW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonPlease" destination="gI4-iS-lrz" id="0YW-Pa-XI0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PXW-7M-NW6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3172" y="-641"/>
         </scene>
         <!--Game SettingsVC-->
         <scene sceneID="205-PF-I4F">

@@ -20,6 +20,8 @@ struct CameraButton: View {
     var body: some View {
        
             Button(action: {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+
                     switch AVCaptureDevice.authorizationStatus(for: .video) {
                         case .authorized:
                             self.showCaptureImageView.toggle() // The user has previously granted access to the camera.

@@ -209,6 +209,7 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func getLocation(_ sender: UIButton) {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
 
         if sender.currentImage == UIImage(systemName: "location") {
         
@@ -218,7 +219,7 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
                 print(error.localizedDescription)
             case .success(let loc):
                 DispatchQueue.main.async {
-                   let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+                   let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
                     
                     self.mapView.setRegion(region, animated: true)
                     self.getLocButton.setImage(UIImage(systemName: "person.2"), for: .normal)
@@ -237,6 +238,8 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func leaveButton(_ sender: Any) {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+
         let alertController = UIAlertController(title: "Leave Game", message: "Are you sure you would like to leave the game? This cannot be undone.", preferredStyle: .alert)
                        let settingsAction = UIAlertAction(title: "Leave", style: .destructive) { (_) -> Void in
                        

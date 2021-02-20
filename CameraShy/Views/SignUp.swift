@@ -29,8 +29,9 @@ struct SignUp: View {
 //                    .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
 //                    .scaleEffect(1.5)
                  
-            
             NavigationLink(destination: Profile(), isActive: $continueNext) {
+                                EmptyView()
+                            }
                 SignInWithAppleButton(.signIn) { request in
                     request.requestedScopes = [.fullName, .email]
                 } onCompletion: { result in
@@ -39,6 +40,7 @@ struct SignUp: View {
                     switch result {
                         case .success(let authResults):
                             print(authResults)
+                            continueNext = true
                             
                             break
                         case .failure(let error):
@@ -50,7 +52,7 @@ struct SignUp: View {
                 .signInWithAppleButtonStyle(.black)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 .scaleEffect(1.5)
-            }
+            
             
 //            // white button
 //            .signInWithAppleButtonStyle(.white)

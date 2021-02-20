@@ -12,6 +12,7 @@ pod 'SPAlert'
 pod 'SwiftLocation/Core'
 pod 'SwiftLocation/BeaconBroadcaster'
   pod 'OneSignal', '>= 3.0.0', '< 4.0'
+pod 'STPopup'
 
 
 end
