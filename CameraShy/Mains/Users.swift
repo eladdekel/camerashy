@@ -32,3 +32,19 @@ struct Again {
 
     
 }
+
+
+struct JSONBack: Decodable {
+    let loc: [Float]
+    let id: String
+    let gameId: String
+    
+    
+}
+
+struct responseWin: Decodable {
+    let status: Int
+    let message: String
+    
+    
+}
