@@ -1,3 +1,6 @@
+### CameraShy - The World is Your Playground
+Turn the world into your playground with CameraShy. A free-for-all tag game where the objective is to find your friends throughout the designated area and snap their picture to eliminate them.
+
 ## Inspiration
 Our team really considered the theme of **Connectivity**, and what it feels like to be connected. That got us to thinking about games we used to be able to play that involved contact such as Tag, Assassin, etc. We decided to see if we could create an **upgraded** spin on these games that would be timelessly fun, yet could also adhere to modern social-distancing guidelines.
 
