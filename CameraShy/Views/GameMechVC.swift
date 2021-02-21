@@ -185,10 +185,12 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
             
             case .didExitedRegion(let r):
                 print("left the region!")
-                
+                DispatchQueue.main.async {
+                    self.playerLoss()
             // SEND MESSAGE TO SERVER
             // REMOVE FROM GAME
-            
+                }
+                    
             default:
                 break
                 
@@ -272,9 +274,8 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     
     func playerLoss() {
         // TELLS THEM THEY LOST, THEIR PLACE, TIME, KILLS
-        
-        
-        //   delegate?.gameEnded(players, timeString(time: seconds), kills)
+      
+ //       delegate?.gameEnded(players, timeString(time: seconds), kills)
         dismiss(animated: true)
         
         

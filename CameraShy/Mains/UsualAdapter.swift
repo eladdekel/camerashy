@@ -9,7 +9,8 @@ import UIKit
 import SwiftUI
 import STPopup
 
-class UsualAdapter: UIViewController {
+class UsualAdapter: UIViewController, GameEndedDelegate {
+
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
@@ -61,6 +62,13 @@ class UsualAdapter: UIViewController {
         
     }
     
+    
+    func gameEnded(_ players: Double, _ time: String, _ kills: Double) {
+        lossNumber(Int(players))
+    }
+    
+    
+    
     func lossNumber(_ loss: Int) {
         blur()
         numberLabel.text = "\(loss)"
@@ -104,8 +112,12 @@ class UsualAdapter: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "hostGameStart" {
             let destvc = segue.destination as! WaitRoomAdapter
-            destvc.navigationController?.isNavigationBarHidden = true
             destvc.host = true
+        }
+        if segue.identifier == "gameOn" {
+            let destvc = segue.destination as! GameMechVC
+            destvc.delegate = self
+            
         }
     }
     
