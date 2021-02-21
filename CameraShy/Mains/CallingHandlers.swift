@@ -103,7 +103,7 @@ class CallingHandlers {
         
         let parameters: Parameters = [
             "appleId": aID!,
-            "gameId": "dOEcP"
+            "gameId": gameID
             ]
             
 
