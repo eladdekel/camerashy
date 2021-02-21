@@ -4,7 +4,6 @@
 //
 //  Created by Eric Zhang on 2021-02-19.
 //
-
 import SwiftUI
 import AVKit
 import Alamofire
@@ -41,6 +40,10 @@ struct Profile: View {
                         Spacer()
                     }
                     else {
+                        Image(systemName: "faceid")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                            .foregroundColor(.white)
                         Spacer()
                     }
                     
@@ -137,12 +140,8 @@ struct Profile: View {
 class ImageUploader: ObservableObject {
     @Published var ahead = false
     
-    func test() {
-        print("ok")
-    }
-    
+ 
     func uploadImage(image: UIImage) {
-     //   let api_url = " http://camera-shy.space/api/shoot"
         let api_url = "https://api.imgur.com/3/image"
         let url = URL(string: api_url)
 
@@ -157,7 +156,6 @@ class ImageUploader: ObservableObject {
             AF.upload(multipartFormData: { multiPart in
                 multiPart.append(imgData, withName: "image", fileName: "file.png", mimeType: "image/png")
             }, with: urlRequest)
-            
                 .uploadProgress(queue: .main, closure: { progress in
                     //Current upload progress of file
                     print("Upload Progress: \(progress.fractionCompleted)")
@@ -169,28 +167,9 @@ class ImageUploader: ObservableObject {
                            case .success(_):
                             do {
                                 
-                           //     if let broughtData = self.parseJSON(data.value as? Data) {
-                                    
-                                    DispatchQueue.main.async {
-                                        self.ahead = true
-                                        
-//                                        if broughtData.status == 1 {
-//                                            let dataDataDict:[String: Int] = ["data": 1]
-//                                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "headShot"), object: nil, userInfo: dataDataDict)
-//
-//                                        } else if broughtData.status == 0 {
-//                                            print("miss!")
-//                                            let dataDataDict:[String: Int] = ["data": 2]
-//                                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "headShot"), object: nil, userInfo: dataDataDict)
-//
-//                                        }
-//
-                                        // USE DATA
-                                    }
-                                    
-                                    
-                             //   }
-                               
+                                DispatchQueue.main.async {
+                                    self.ahead = true
+                                }
                             
                             let dictionary = try JSONSerialization.jsonObject(with: data.data!, options: .fragmentsAllowed) as! NSDictionary
                               
@@ -213,32 +192,8 @@ class ImageUploader: ObservableObject {
 
 
                 })
-        
-        
-        UserDefaults().setValue(true, forKey: "isAppAlreadyConfigured")
-        self.ahead = true
     }
 
-    
-    func parseJSON(_ WPData2: Data) -> responseWin? {
-        // first have to inform how the data is structured, use structs for it
-        let decoder = JSONDecoder() //create the decoder
-        do {
-            let decodedData = try decoder.decode(responseWin.self, from: WPData2)
-        
-
-            
-          //  print(decodedData[1])
-            return(decodedData)
-            
-        } catch {
-            print(error)
-            return nil
-        }
-                
-    }
-    
-    
 }
 
 

@@ -9,10 +9,17 @@ import SwiftUI
 
 struct Waitroom: View {
     var host: Bool
-    var code: String?
-    @State var pushBack = false
-    @State var pushForward = false
-    @Environment(\.presentationMode) var presentationMode
+       @State var pushBack = false
+       @State var pushForward = false
+       @Environment(\.presentationMode) var presentationMode
+       @State var gameId = "000000"
+       @ObservedObject var gameCode = GameCode()
+       
+       init(host: Bool) {
+           self.host = host
+           NotificationCenter.default.addObserver(self, selector: #selector(gameCode.loadList), name: NSNotification.Name(rawValue: "gameID"), object: nil)
+
+       }
     
     
     var body: some View {
@@ -40,10 +47,19 @@ struct Waitroom: View {
                     .foregroundColor(.white)
                 VStack {
                     HStack {
-                        Text(code ?? "000000")
+                        Text(gameCode.code)
                             .font(.system(size: 20, weight: .bold, design: .rounded))
                             .foregroundColor(.white)
-
+                            .onAppear {
+                                
+                                NotificationCenter.default.addObserver(forName: NSNotification.Name("gameId"), object: nil, queue: nil) { (_) in
+                                    
+                                }
+                                
+                                
+                                
+                            }
+                        
                     }
                     .padding(.horizontal, 30)
                     .padding(.vertical, 16)
@@ -52,8 +68,8 @@ struct Waitroom: View {
                 .clipShape(Capsule())
                 .padding(.top, 20)
                 .padding(.bottom, 50)
-
-                                
+                
+                
             }
             .padding(.top, 50)
             VStack {
@@ -154,6 +170,21 @@ struct Waitroom: View {
         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         .background(Color("MediumBlue").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
         .navigationBarBackButtonHidden(true)
+    }
+}
+
+class GameCode: ObservableObject {
+    @Published var code = "0000000"
+    @objc func loadList(notification: NSNotification) {
+        if let filebrought = notification.userInfo?["gameId"] as? String {
+            DispatchQueue.main.async {
+                self.code = filebrought
+                print("hello")
+            }
+        } else {
+            print("error!")
+            
+        }
     }
 }
 

@@ -4,7 +4,6 @@
 //
 //  Created by Eric Zhang on 2021-02-19.
 //
-
 import SwiftUI
 
 struct Welcome: View {
@@ -18,8 +17,11 @@ struct Welcome: View {
                     .offset(y: -50)
                     .padding(.horizontal, 50)
                     .foregroundColor(.white)
+                Image("navigate")
+                    .resizable()
+                    .frame(width: 400, height: 285)
+                    .foregroundColor(.white)
                 Spacer()
-                
                 NavigationLink(destination: SignUp()){
                     HStack {
                         Image(systemName: "paperplane.fill")
