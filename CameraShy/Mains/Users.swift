@@ -92,8 +92,30 @@ struct LatLong: Decodable {
     
 }
 
-struct OtherLocs: Decodable {
+struct GameData: Decodable {
+    let game: TrueGame
+    let numPlayers: Double
     
+    
+}
+
+struct TrueGame: Decodable {
+    let bound: [Double]
+    let id: String
+    let lat: Double
+    let long: Double
+    let memberLimit: Double
+    let timeLimit: Double
+    let players: [Players]
+    
+    
+}
+
+struct Players: Decodable {
+    let _id: String
+    let imageUrl: String
+    let personId: String
+    let osId: String
     
     
 }

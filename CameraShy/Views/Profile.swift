@@ -7,6 +7,9 @@
 import SwiftUI
 import AVKit
 import Alamofire
+import SwiftLocation
+import OneSignal
+import OneSignalNotificationServiceExtension
 
 struct Profile: View {
     @State var image: UIImage? = nil
@@ -33,6 +36,7 @@ struct Profile: View {
                 VStack {
                     if (image != nil) {
                         Image(uiImage:image!).resizable()
+                            .scaledToFill()
                             .frame(width: 250, height: 250)
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                             .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.white, lineWidth: 8))
@@ -107,7 +111,7 @@ struct Profile: View {
                                 .padding(.horizontal, 30)
                                 .padding(.vertical, 16)
                                 .onTapGesture {
-                                    imgupload.uploadImage(image: image!)
+                                    imgupload.uploadProfile(image: image!)
                                 }
 
                             }
@@ -140,61 +144,162 @@ struct Profile: View {
 class ImageUploader: ObservableObject {
     @Published var ahead = false
     
- 
-    func uploadImage(image: UIImage) {
-        let api_url = "https://api.imgur.com/3/image"
+    func uploadProfile(image: UIImage) {
+        let api_url = "http://camera-shy.space/api/createUser"
         let url = URL(string: api_url)
 
         var urlRequest = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0 * 1000)
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        
-        
-        let imgData = image.jpegData(compressionQuality: 0.5)!
 
-            AF.upload(multipartFormData: { multiPart in
-                multiPart.append(imgData, withName: "image", fileName: "file.png", mimeType: "image/png")
+        let imgData = image.jpegData(compressionQuality: 0.5)!
+        
+        let parameterDict = NSMutableDictionary()
+        parameterDict.setValue(OneSignal.getDeviceState().userId!, forKey: "osId")
+        parameterDict.setValue(UserDefaults().string(forKey: "AppleInfoUser")!, forKey: "id")
+        parameterDict.setValue("alias johnson", forKey: "name")
+
+        AF.upload(multipartFormData: { multiPart in
+            for (key, value) in parameterDict {
+                if let temp = value as? String {
+                    multiPart.append(temp.data(using: .utf8)!, withName: key as! String)
+                }
+                if let temp = value as? Int {
+                    multiPart.append("\(temp)".data(using: .utf8)!, withName: key as! String)
+                }
+                if let temp = value as? Double {
+                    multiPart.append("\(temp)".data(using: .utf8)!, withName: key as! String)
+                }
+            }
+                        
+            multiPart.append(imgData, withName: "img", fileName: "file.png", mimeType: "image/png")
             }, with: urlRequest)
                 .uploadProgress(queue: .main, closure: { progress in
-                    //Current upload progress of file
-                    print("Upload Progress: \(progress.fractionCompleted)")
+                //Current upload progress of file
+                print("Upload Progress: \(progress.fractionCompleted)")
+                    
+                    DispatchQueue.main.async {
+                        self.ahead = true
+                    }
+                
                 })
                 .responseJSON(completionHandler: { data in
+                       switch data.result {
 
-                           switch data.result {
-
-                           case .success(_):
-                            do {
-                                
-                                DispatchQueue.main.async {
-                                    self.ahead = true
-                                }
-                            
-                            let dictionary = try JSONSerialization.jsonObject(with: data.data!, options: .fragmentsAllowed) as! NSDictionary
-                              
-                                print("Success!")
-                                print(dictionary)
-                           }
-                           catch {
-                              // catch error.
-                            print("catch error")
-
-                                  }
+                       case .success(_):
+                            print("Success!")
                             break
-                                
-                           case .failure(_):
+                        
+                       case .failure(_):
                             print("failure")
-
                             break
-                            
-                        }
+                        
+                    }
 
 
+            })
+    }
+    
+    func getDict(completion: @escaping(_ dict: NSMutableDictionary) -> Void) {
+      
+        
+        SwiftLocation.gpsLocation().then { (result) in
+            let parameterDict = NSMutableDictionary()
+
+        
+
+            switch result {
+            case .success(let newData):
+                DispatchQueue.main.async {
+                    parameterDict.setValue(newData.coordinate.longitude, forKey: "long")
+                    parameterDict.setValue(newData.coordinate.latitude, forKey: "lat")
+
+                    parameterDict.setValue(UserDefaults().string(forKey: "AppleInfoUser")!, forKey: "id")
+                    parameterDict.setValue(Singleton.shared.gameID ?? "AAAAAA", forKey: "gameId")
+
+                    
+                    completion(parameterDict)
+
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+                
+                
+            }
+        }
+
+    }
+ 
+    func uploadImage(image: UIImage, dict: NSMutableDictionary) {
+        let api_url = "http://camera-shy.space/api/shoot"
+        let url = URL(string: api_url)
+
+        var urlRequest = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0 * 1000)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+
+        
+        let imgData = image.jpegData(compressionQuality: 0.5)!
+        
+
+        AF.upload(multipartFormData: { multiPart in
+            for (key, value) in dict {
+                if let temp = value as? String {
+                    multiPart.append(temp.data(using: .utf8)!, withName: key as! String)
+                }
+                if let temp = value as? Int {
+                    multiPart.append("\(temp)".data(using: .utf8)!, withName: key as! String)
+                }
+                if let temp = value as? Double {
+                    multiPart.append("\(temp)".data(using: .utf8)!, withName: key as! String)
+                }
+            }
+            
+            print(dict)
+            
+            multiPart.append(imgData, withName: "img", fileName: "file.png", mimeType: "image/png")
+            }, with: urlRequest)
+                .uploadProgress(queue: .main, closure: { progress in
+                //Current upload progress of file
+                print("Upload Progress: \(progress.fractionCompleted)")
                 })
+                .responseJSON(completionHandler: { data in
+                       switch data.result {
+
+                       case .success(_):
+                        do {
+                            
+                            DispatchQueue.main.async {
+                                self.ahead = true
+                            }
+                        
+                        let dictionary = try JSONSerialization.jsonObject(with: data.data!, options: .fragmentsAllowed) as! NSDictionary
+                          
+                            print("Success!")
+                            print(dictionary)
+                       }
+                        catch {
+                          // catch error.
+                        print("catch error")
+
+                              }
+                        break
+                            
+                       case .failure(_):
+                        print("failure")
+
+                        break
+                        
+                    }
+
+
+            })
     }
 
 }
+
+
 
 
 class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {

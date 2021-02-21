@@ -345,7 +345,7 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
         let settingsAction = UIAlertAction(title: "Leave", style: .destructive) { (_) -> Void in
             
             self.dismiss(animated: true) {
-                // RUN COMMAND
+                self.call.onPlayerLeave()
                 
             }
             

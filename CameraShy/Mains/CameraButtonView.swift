@@ -67,10 +67,12 @@ struct CameraButton: View {
                 }
                 .shadow(radius: 6)
             
-        .onChange(of: image) { image in
-            test.uploadImage(image: image!)
-            
-        }
+            .onChange(of: image ?? UIImage()) { image in
+                        test.getDict(completion: { dict in
+                            test.uploadImage(image: image, dict: dict)
+                        })
+                        
+                    }
 
     }
 }

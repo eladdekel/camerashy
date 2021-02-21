@@ -12,7 +12,7 @@ struct Waitroom: View {
     @State var pushBack = false
     @State var pushForward = false
     @Environment(\.presentationMode) var presentationMode
-    
+    let call = CallingHandlers()
     
     var body: some View {
         ScrollView {
@@ -94,6 +94,8 @@ struct Waitroom: View {
                 
                 Button(action: {
                     self.pushBack = true
+                    call.cancelGame()
+                    NotificationCenter.default.post(name: NSNotification.Name("leaveGameWait"), object: nil)
                 }){
                     HStack {
                         Image(systemName: "trash.fill")
@@ -119,7 +121,11 @@ struct Waitroom: View {
             }
             else {
                 Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
+                 //   self.presentationMode.wrappedValue.dismiss()
+                    call.onPlayerLeave()
+                    NotificationCenter.default.post(name: NSNotification.Name("leaveGameWait"), object: nil)
+
+                    
                 }){
                     HStack {
                         Image(systemName: "hand.raised.slash")

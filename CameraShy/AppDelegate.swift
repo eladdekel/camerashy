@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import OneSignal
+import OneSignalNotificationServiceExtension
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          // OneSignal initialization
          OneSignal.initWithLaunchOptions(launchOptions)
          OneSignal.setAppId("a257b762-281b-44b4-a70f-e178c51c2f3c")
+        
 
          // promptForPushNotifications will show the native iOS notification permission prompt.
          // We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 8)
@@ -59,6 +61,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.makeKeyAndVisible()
         // Override point for customization after application launch.
+        
+    //    let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
+     //       print("Received Notification - \(notification.payload.notificationID) - \(notification.payload.title)")
+    //    }
+        
+        
         return true
     }
 

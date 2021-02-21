@@ -6,6 +6,7 @@ PODS:
   - SwiftLocation/BeaconBroadcaster (5.1.0):
     - SwiftLocation/Core
   - SwiftLocation/Core (5.1.0)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - STPopup
   - SwiftLocation/BeaconBroadcaster
   - SwiftLocation/Core
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -22,6 +24,7 @@ SPEC REPOS:
     - SPAlert
     - STPopup
     - SwiftLocation
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
@@ -29,7 +32,8 @@ SPEC CHECKSUMS:
   SPAlert: f01599d5224e93547cbb9364b2c42e88074644b9
   STPopup: a9045557bc48a0df51fbb7bf0544447c5fe84d34
   SwiftLocation: 83e0ea75a1969cee3a1197e2b7095603fc23fde5
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 7eb8ceac00f0898538455db552fdf30d7becc662
+PODFILE CHECKSUM: 64ff994bdd2badc48b509125fb8c1d6e1e283ad3
 
 COCOAPODS: 1.10.0

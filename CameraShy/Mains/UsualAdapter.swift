@@ -18,6 +18,9 @@ class UsualAdapter: UIViewController, GameEndedDelegate {
     @IBOutlet weak var awardView: AlertView!
     let contentView = UIHostingController(rootView: UsualMainView())
     var timer = Timer()
+    var host = false
+    var playerCount: Double = 1
+    
 
     
     override func viewDidLoad() {
@@ -33,8 +36,13 @@ class UsualAdapter: UIViewController, GameEndedDelegate {
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("hostGameStart"), object: nil, queue: nil) { (_) in
+            self.host = true
             self.performSegue(withIdentifier: "hostGameStart", sender: nil)
         }
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadGameData), name: NSNotification.Name(rawValue: "gameInfo"), object: nil)
+
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("createGame"), object: nil, queue: nil) { (_) in
             print("creating")
@@ -67,6 +75,15 @@ class UsualAdapter: UIViewController, GameEndedDelegate {
         awardView.backgroundColor = UIColor(named: "TextColor")
        
         
+        
+    }
+    
+    @objc func loadGameData(notification: NSNotification) {
+        if let filebrought = notification.userInfo?["userUpdates"] as? GameData {
+            playerCount = filebrought.numPlayers
+            performSegue(withIdentifier: "hostGameStart", sender: nil)
+            
+        }
         
     }
     
@@ -120,7 +137,7 @@ class UsualAdapter: UIViewController, GameEndedDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "hostGameStart" {
             let destvc = segue.destination as! WaitRoomAdapter
-            destvc.host = true
+            destvc.host = host
             destvc.gameId = Singleton.shared.gameID!
         }
         if segue.identifier == "gameOn" {

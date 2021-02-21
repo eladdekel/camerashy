@@ -10,6 +10,7 @@ import Alamofire
 import SwiftLocation
 import MapKit
 import CoreLocation
+import SwiftyJSON
 
 
 class CallingHandlers {
@@ -24,18 +25,24 @@ class CallingHandlers {
             
         }
         
+        
+      //  let json = JSON(["appleId":aID,"numPlayers":data.numPlayers,"time": "\(data.time)"])
+
+       
+        
+        
         let parameters: Parameters = [
             "appleId": aID!,
             "numPlayers": data.numPlayers,
             "time": "\(data.time)",
-            "gfence": [
                 "lat":data.gfence.lat,
                 "long":data.gfence.long,
                 "rad":data.gfence.rad,
                 "bound":data.gfence.bound
-            ]
             
          ]
+        
+ 
 
         
         AF.request("http://camera-shy.space/api/createGame", method: .post, parameters: parameters).validate().responseDecodable(of: gameID.self) { (response) in
@@ -68,10 +75,9 @@ class CallingHandlers {
         let parameters: Parameters = [
             "gameId":data.gameId,
             "appleId": aID!,
-            "loc":[
                 "lat":data.loc.lat,
                 "long:":data.loc.long
-            ]
+            
             
          ]
 
@@ -105,15 +111,69 @@ class CallingHandlers {
             "appleId": aID!,
             "gameId": gameID
             ]
-            
-
+         //   print(gameID)
 
         
-        AF.request("http://camera-shy.space/api/join", method: .post, parameters: parameters).responseJSON { (test) in
-            print(test.data)
+        AF.request("http://camera-shy.space/api/join", method: .get, parameters: parameters).validate().responseDecodable(of: GameData.self) { (response) in
+            guard let responses = response.value else { return }
+            print(responses)
+
+            DispatchQueue.main.async {
+                
+                Singleton.shared.gameID = gameID
+               let dataDataDict:[String: GameData] = ["userUpdates": responses]
+               NotificationCenter.default.post(name: NSNotification.Name(rawValue: "gameInfo"), object: nil, userInfo: dataDataDict)
+                print("hello")
+            }
+        
+    }
         }
+    
+    
+    func onPlayerLeave() {
+        var aID: String?
+        
+        if let appleID = UserDefaults().string(forKey: "AppleInfoUser") {
+            aID = appleID
             
         }
+        
+        
+        let parameters: Parameters = [
+            "appleId": aID!,
+            "gameId": Singleton.shared.gameID!
+            ]
+            
+        
+        AF.request("http://camera-shy.space/api/leave", method: .get, parameters: parameters).response { (test) in
+            print(test)
+        }
+
+        
+    }
+    
+    func cancelGame() {
+        var aID: String?
+        
+        if let appleID = UserDefaults().string(forKey: "AppleInfoUser") {
+            aID = appleID
+            
+        }
+        
+        let parameters: Parameters = [
+            "appleId": aID!,
+            "gameId": Singleton.shared.gameID!
+            ]
+            
+        
+        AF.request("http://camera-shy.space/api/cancel", method: .get, parameters: parameters).response { (test) in
+            print(test)
+        }
+
+        
+        
+        
+    }
         
         
         

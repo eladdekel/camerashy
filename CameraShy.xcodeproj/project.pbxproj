@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7549C28125E21BAF00A9168E /* CallingHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549C28025E21BAF00A9168E /* CallingHandlers.swift */; };
+		7549C28525E24F0700A9168E /* GForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549C28425E24F0700A9168E /* GForce.swift */; };
 		755C0D9B25E18D9900C9D6BF /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9625E18D9900C9D6BF /* MainContainerView.swift */; };
 		755C0D9C25E18D9900C9D6BF /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9725E18D9900C9D6BF /* Welcome.swift */; };
 		755C0D9D25E18D9900C9D6BF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9825E18D9900C9D6BF /* Profile.swift */; };
@@ -70,6 +71,7 @@
 		12543426300CDA7C0B48B0D4 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		31C6AF0773C2B804BAFB9D5B /* Pods-CameraShy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraShy.release.xcconfig"; path = "Target Support Files/Pods-CameraShy/Pods-CameraShy.release.xcconfig"; sourceTree = "<group>"; };
 		7549C28025E21BAF00A9168E /* CallingHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingHandlers.swift; sourceTree = "<group>"; };
+		7549C28425E24F0700A9168E /* GForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GForce.swift; sourceTree = "<group>"; };
 		755C0D8F25E183C900C9D6BF /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		755C0D9625E18D9900C9D6BF /* MainContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		755C0D9725E18D9900C9D6BF /* Welcome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				755C0DD525E1BC1F00C9D6BF /* AlertView.xib */,
 				755C0DE525E1D2ED00C9D6BF /* WaitRoomAdapter.swift */,
 				7549C28025E21BAF00A9168E /* CallingHandlers.swift */,
+				7549C28425E24F0700A9168E /* GForce.swift */,
 			);
 			path = Mains;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				755C0D9D25E18D9900C9D6BF /* Profile.swift in Sources */,
 				755C0DD225E1BC1200C9D6BF /* AlertView.swift in Sources */,
 				755C0D9C25E18D9900C9D6BF /* Welcome.swift in Sources */,
+				7549C28525E24F0700A9168E /* GForce.swift in Sources */,
 				75DD383525E17B6C00187366 /* Users.swift in Sources */,
 				75A2570225E0ACFE008DD441 /* AppDelegate.swift in Sources */,
 				75E4144F25E0CCD6004A7839 /* GameLocPickVC.swift in Sources */,

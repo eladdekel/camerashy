@@ -36,6 +36,13 @@ class WaitRoomAdapter: UIViewController {
            
 
         }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("leaveGameWait"), object: nil, queue: nil) { (_) in
+            self.presentingViewController?.dismiss(animated: true)
+        
+        }
+        
+        
         contentView.view.translatesAutoresizingMaskIntoConstraints = false
         contentView.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         contentView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
