@@ -48,3 +48,31 @@ struct responseWin: Decodable {
     
     
 }
+
+
+struct gameID: Decodable {
+    let gameId: String
+    
+}
+
+
+struct GameCreator: Decodable {
+    let appleId: String
+    let numPlayers: Float
+    let time: Float
+    let gfence: GeoFence
+    
+    
+    
+}
+
+
+struct GeoFence: Decodable {
+    let lat: Float
+    let long: Float
+    let rad: Float
+    let bound: [Float]
+    
+    
+    
+}

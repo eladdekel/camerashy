@@ -104,7 +104,7 @@ struct Profile: View {
                                 .padding(.horizontal, 30)
                                 .padding(.vertical, 16)
                                 .onTapGesture {
-                                 //   imgupload.uploadImage(image: image!)
+                                    imgupload.uploadImage(image: image!)
                                 }
 
                             }
@@ -169,27 +169,27 @@ class ImageUploader: ObservableObject {
                            case .success(_):
                             do {
                                 
-                                if let broughtData = self.parseJSON(data.value as! Data) {
+                           //     if let broughtData = self.parseJSON(data.value as? Data) {
                                     
                                     DispatchQueue.main.async {
                                         self.ahead = true
                                         
-                                        if broughtData.status == 1 {
-                                            let dataDataDict:[String: Int] = ["data": 1]
-                                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "headShot"), object: nil, userInfo: dataDataDict)
-                                            
-                                        } else if broughtData.status == 0 {
-                                            print("miss!")
-                                            let dataDataDict:[String: Int] = ["data": 2]
-                                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "headShot"), object: nil, userInfo: dataDataDict)
-                                            
-                                        }
-                                        
+//                                        if broughtData.status == 1 {
+//                                            let dataDataDict:[String: Int] = ["data": 1]
+//                                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "headShot"), object: nil, userInfo: dataDataDict)
+//
+//                                        } else if broughtData.status == 0 {
+//                                            print("miss!")
+//                                            let dataDataDict:[String: Int] = ["data": 2]
+//                                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "headShot"), object: nil, userInfo: dataDataDict)
+//
+//                                        }
+//
                                         // USE DATA
                                     }
                                     
                                     
-                                }
+                             //   }
                                
                             
                             let dictionary = try JSONSerialization.jsonObject(with: data.data!, options: .fragmentsAllowed) as! NSDictionary
@@ -214,6 +214,8 @@ class ImageUploader: ObservableObject {
 
                 })
         
+        
+        UserDefaults().setValue(true, forKey: "isAppAlreadyConfigured")
         self.ahead = true
     }
 

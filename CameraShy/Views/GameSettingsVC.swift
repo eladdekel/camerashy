@@ -32,6 +32,7 @@ class GameSettingsVC: UIViewController, PassingDataBack {
     var codesForGeo: CLLocationCoordinate2D?
     var gameName: String = ""
     var geoGo: Again?
+    let call = CallingHandlers()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,52 +110,30 @@ class GameSettingsVC: UIViewController, PassingDataBack {
    
     }
     
-    func checkApple() -> String {
-        
-        return("test")
-    }
     
     
     @IBAction func doneButton(_ sender: Any) {
         if geoGo != nil {
-            // SAVE AND SEND DATA TO SERVER
             
-            print(_POSIX2_PBS_ACCOUNTING)
-            
-            let parameters: Parameters = [
-                "appleId": checkApple(),
-                "numPlayers": playerStepper.value,
-                "time": "\(timeStepper.value)",
-                "Timestamp": "",
-                "gfence": [
-                    "lat":geoGo!.cords.latitude,
-                    "long":geoGo!.cords.longitude,
-                    "rad":geoGo!.range,
-                    "bound":[geoGo!.zoom.latitudeDelta, geoGo?.zoom.longitudeDelta]
-                ]
+            if let appleID = UserDefaults().string(forKey: "AppleInfoUser") {
+                let bounds = [Float(geoGo!.zoom.latitudeDelta), Float(geoGo!.zoom.longitudeDelta)]
                 
-             ]
+                let fence = GeoFence(lat: Float(geoGo!.cords.latitude), long: Float(geoGo!.cords.longitude), rad: Float(geoGo!.range), bound: bounds)
 
-            
-            AF.request("https://camera-shy.space/api/createGame", method: .post, parameters: parameters).response {
-                response in
-                print(response)
+                let newParm = GameCreator(appleId: appleID, numPlayers: Float(playerStepper.value), time: Float(timeStepper.value), gfence: fence)
                 
+                call.createGame(newParm)
+                
+            } else {
+
+            print("error")
+
             }
-            // CALL THE NEXT VIEW WITH THE NEW DATA
-      
                 
             dismiss(animated: true) {
                 NotificationCenter.default.post(name: NSNotification.Name("hostGameStart"), object: nil)
-
                 
             }
-            
-           
-
-            
-            
-            // DISMISS?
             
             
         } else {

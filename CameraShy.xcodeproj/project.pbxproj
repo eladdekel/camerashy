@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7549C28125E21BAF00A9168E /* CallingHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549C28025E21BAF00A9168E /* CallingHandlers.swift */; };
 		755C0D9B25E18D9900C9D6BF /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9625E18D9900C9D6BF /* MainContainerView.swift */; };
 		755C0D9C25E18D9900C9D6BF /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9725E18D9900C9D6BF /* Welcome.swift */; };
 		755C0D9D25E18D9900C9D6BF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C0D9825E18D9900C9D6BF /* Profile.swift */; };
@@ -68,6 +69,7 @@
 		0A32C96B0FDBBA7EA952B524 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		12543426300CDA7C0B48B0D4 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		31C6AF0773C2B804BAFB9D5B /* Pods-CameraShy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraShy.release.xcconfig"; path = "Target Support Files/Pods-CameraShy/Pods-CameraShy.release.xcconfig"; sourceTree = "<group>"; };
+		7549C28025E21BAF00A9168E /* CallingHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingHandlers.swift; sourceTree = "<group>"; };
 		755C0D8F25E183C900C9D6BF /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		755C0D9625E18D9900C9D6BF /* MainContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		755C0D9725E18D9900C9D6BF /* Welcome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				755C0DD125E1BC1200C9D6BF /* AlertView.swift */,
 				755C0DD525E1BC1F00C9D6BF /* AlertView.xib */,
 				755C0DE525E1D2ED00C9D6BF /* WaitRoomAdapter.swift */,
+				7549C28025E21BAF00A9168E /* CallingHandlers.swift */,
 			);
 			path = Mains;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				755C0DAF25E1A26F00C9D6BF /* SingletonFiles.swift in Sources */,
 				755C0D9F25E18D9900C9D6BF /* SignUp.swift in Sources */,
 				755C0DE625E1D2ED00C9D6BF /* WaitRoomAdapter.swift in Sources */,
+				7549C28125E21BAF00A9168E /* CallingHandlers.swift in Sources */,
 				755C0DDE25E1D0BA00C9D6BF /* Waitroom.swift in Sources */,
 				755C0DA725E18E8700C9D6BF /* UsualAdapter.swift in Sources */,
 				75A2570425E0ACFE008DD441 /* SceneDelegate.swift in Sources */,
