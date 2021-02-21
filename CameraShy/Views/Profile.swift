@@ -104,7 +104,7 @@ struct Profile: View {
                                 .padding(.horizontal, 30)
                                 .padding(.vertical, 16)
                                 .onTapGesture {
-                                    imgupload.uploadImage(image: image!)
+                                 //   imgupload.uploadImage(image: image!)
                                 }
 
                             }
@@ -142,7 +142,8 @@ class ImageUploader: ObservableObject {
     }
     
     func uploadImage(image: UIImage) {
-        let api_url = " http://camera-shy.space/api/shoot"
+     //   let api_url = " http://camera-shy.space/api/shoot"
+        let api_url = "https://api.imgur.com/3/image"
         let url = URL(string: api_url)
 
         var urlRequest = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0 * 1000)
@@ -212,6 +213,8 @@ class ImageUploader: ObservableObject {
 
 
                 })
+        
+        self.ahead = true
     }
 
     

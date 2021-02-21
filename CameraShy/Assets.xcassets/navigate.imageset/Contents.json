@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Navigation_Flatline.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
