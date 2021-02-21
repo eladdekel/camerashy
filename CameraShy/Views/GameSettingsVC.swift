@@ -12,27 +12,20 @@ import Alamofire
 class GameSettingsVC: UIViewController, PassingDataBack {
 
     
+    @IBOutlet weak var miniBack: UIView!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var gameTitle: UILabel!
     
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var timeBack: UIView!
-    @IBOutlet weak var timeTitle: UILabel!
     @IBOutlet weak var timeLimitLabel: UILabel!
     @IBOutlet weak var timeStepper: UIStepper!
-    @IBOutlet weak var gameNameLabel: UILabel!
     
     
-    @IBOutlet weak var playerBack: UIView!
-    @IBOutlet weak var playerTitle: UILabel!
     @IBOutlet weak var playerLimitLabel: UILabel!
     @IBOutlet weak var playerStepper: UIStepper!
     
     
-    @IBOutlet weak var mapBack: UIView!
     @IBOutlet weak var mapTitle: UILabel!
     @IBOutlet weak var mapView: UIView!
-    @IBOutlet weak var mapKitV: MKMapView!
     
     
     @IBOutlet weak var doneButton: UIButton!
@@ -50,7 +43,8 @@ class GameSettingsVC: UIViewController, PassingDataBack {
     func UISetup() {
         self.navigationController?.isNavigationBarHidden = true
 
-        mainView.backgroundColor = UIColor(named: "MediumBlue")
+        
+        miniBack.layer.cornerRadius = 20
         mapView.layer.cornerRadius = 20
         gameTitle.text = gameName
         gameTitle.textAlignment = .center
@@ -66,18 +60,15 @@ class GameSettingsVC: UIViewController, PassingDataBack {
         mapView.addGestureRecognizer(mapTapped)
         mapView.isUserInteractionEnabled = true
         mapView.backgroundColor = UIColor.clear
-        mapKitV.layer.cornerRadius = 20
         playerStepper.backgroundColor = UIColor(named: "ButtonColor")
         timeStepper.backgroundColor = UIColor(named: "ButtonColor")
         doneButton.layer.cornerRadius = 20
-        mapKitV.isUserInteractionEnabled = false
-        errorLabel.text = ""
         
         if Singleton.shared.teamName != nil {
-            gameNameLabel.text = Singleton.shared.teamName
+            gameTitle.text = Singleton.shared.teamName
             
         } else {
-            gameNameLabel.text = "Settings"
+            gameTitle.text = "Settings"
             
         }
         
@@ -167,7 +158,6 @@ class GameSettingsVC: UIViewController, PassingDataBack {
             
             
         } else {
-            errorLabel.text = "Please select a location."
             print("test")
             
         }

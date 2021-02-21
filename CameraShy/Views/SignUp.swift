@@ -39,7 +39,21 @@ struct SignUp: View {
 
                     switch result {
                         case .success(let authResults):
-                            print(authResults)
+                            
+                            switch authResults.credential {
+                            case let appleIDCredential as ASAuthorizationAppleIDCredential:
+                                
+                                UserDefaults().setValue(appleIDCredential.user, forKey: "AppleInfoUser")
+                                UserDefaults().setValue(appleIDCredential.fullName, forKey: "AppleInfoName")
+                                UserDefaults().setValue(appleIDCredential.email, forKey: "AppleInfoEmail")
+
+                                      print("worked!")
+                                      
+                                  default:
+                                      break
+                                  }
+                 
+                            
                             continueNext = true
                             
                             break

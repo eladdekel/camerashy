@@ -24,12 +24,16 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var playerNumber: UILabel!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var playerLabel: UILabel!
+    @IBOutlet weak var backViewBigLabel: UILabel!
+    @IBOutlet weak var backViewSecondLabel: UILabel!
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var countdownLabel: UILabel!
     var trueLocation: GPSLocationRequest.ProducedData?
     var Users: [User] = []
     var seconds: Double = 0
     var isTimerRunning = false
     var timer = Timer()
+    var timer2 = Timer()
     var delegate: GameEndedDelegate?
     var regionMaster: MKCoordinateRegion?
     
@@ -40,7 +44,8 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         countdownLabel.text = "\(timeString(time: seconds))"
         prepSwiftUI()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadKills), name: NSNotification.Name(rawValue: "headShot"), object: nil)
+
         // RUN SET LOCATION WITH THE DATA
         // START PLOTTING USERS
     }
@@ -68,6 +73,10 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
         topView.layer.opacity = 0.9
         self.getLocButton.setImage(UIImage(systemName: "location"), for: .normal)
         leaveButton.setImage(UIImage(systemName: "hand.raised.slash"), for: .normal)
+        
+        
+        backView.alpha = 0
+        
         
         
         //        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemMaterialDark)
@@ -203,6 +212,43 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     
     
     // MARK: - GameUpdated Func
+    
+    @objc func loadKills(notification: NSNotification) {
+        if let results = notification.userInfo?["data"] as? Int {
+            switch results {
+            case 1:
+                // KILL
+                backView.backgroundColor = UIColor(named: "OrangeColor")
+                backViewBigLabel.text = "Nice Shot!"
+                backViewSecondLabel.text = "You caught them!"
+                
+            case 0:
+                // MISS
+                backView.backgroundColor = UIColor(named: "TextColor")
+                backViewBigLabel.text = "Uh Oh!"
+                backViewSecondLabel.text = "Your attempt was unsuccessful."
+            default:
+               break
+            }
+            
+            backView.alpha = 1
+            timer2 = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(hideTheView), userInfo: nil, repeats: false)
+            
+        } else {
+            print("error loading hitshot data")
+            
+        }
+    }
+    
+    
+    @objc func hideTheView() {
+        UIView.animate(withDuration: 2) {
+            self.backView.alpha = 0
+        }
+        
+        
+    }
+    
     
     func gameUpdate(players: Double, time: Double) {
         

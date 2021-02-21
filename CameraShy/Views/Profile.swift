@@ -174,11 +174,13 @@ class ImageUploader: ObservableObject {
                                         self.ahead = true
                                         
                                         if broughtData.status == 1 {
-                                            print("hit!")
+                                            let dataDataDict:[String: Int] = ["data": 1]
+                                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "headShot"), object: nil, userInfo: dataDataDict)
                                             
                                         } else if broughtData.status == 0 {
                                             print("miss!")
-                                            
+                                            let dataDataDict:[String: Int] = ["data": 2]
+                                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "headShot"), object: nil, userInfo: dataDataDict)
                                             
                                         }
                                         

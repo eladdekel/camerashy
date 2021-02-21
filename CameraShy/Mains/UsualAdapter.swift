@@ -36,6 +36,13 @@ class UsualAdapter: UIViewController, GameEndedDelegate {
             self.performSegue(withIdentifier: "hostGameStart", sender: nil)
         }
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("createGame"), object: nil, queue: nil) { (_) in
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameSettingsVC") as! GameSettingsVC
+            self.present(vc, animated: true)
+          //  self.performSegue(withIdentifier: "createGame", sender: nil)
+        }
+        
+        
       //  lossNumber(2)  RUN LOSSNUMBER WHEN GAME ENDS
     }
     @objc func backgroundViewDidTap() {
