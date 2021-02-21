@@ -49,11 +49,11 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     
     func prepSwiftUI() {
         let childView = UIHostingController(rootView: CameraButton())
-             addChild(childView)
-             childView.view.frame = containerView.bounds
+        addChild(childView)
+        childView.view.frame = containerView.bounds
         childView.view.backgroundColor = .clear
-             containerView.addSubview(childView.view)
-             childView.didMove(toParent: self)
+        containerView.addSubview(childView.view)
+        childView.didMove(toParent: self)
         
     }
     
@@ -70,13 +70,13 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
         leaveButton.setImage(UIImage(systemName: "hand.raised.slash"), for: .normal)
         
         
-//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemMaterialDark)
-//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView.frame = bottomView.bounds
-//        blurEffectView.backgroundColor = UIColor(named: "MediumBlue")
-//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        bottomView.addSubview(blurEffectView)
-//        bottomView.sendSubviewToBack(blurEffectView)
+        //        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemMaterialDark)
+        //        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //        blurEffectView.frame = bottomView.bounds
+        //        blurEffectView.backgroundColor = UIColor(named: "MediumBlue")
+        //        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        //        bottomView.addSubview(blurEffectView)
+        //        bottomView.sendSubviewToBack(blurEffectView)
     }
     
     // MARK: - Plots Users
@@ -94,14 +94,14 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
             playerPoint.coordinate = user.location
             mapView.addAnnotation(playerPoint)
         }
-    
+        
         
         playerNumber.text = "\(Users.count)"
         
     }
     
     // MARK: - Draws Radius
-   
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKCircle {
             let circle = MKCircleRenderer(overlay: overlay)
@@ -132,7 +132,7 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
         let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 3000)
         
         mapView.setCameraZoomRange(zoomRange, animated: true)
-       
+        
         circle(coordinate, radius)
         
         
@@ -142,10 +142,10 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     // MARK: - Formats Timer
     
     func timeString(time:TimeInterval) -> String {
-    let hours = Int(time) / 3600
-    let minutes = Int(time) / 60 % 60
-    let seconds = Int(time) % 60
-    return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
     
     @objc func updateTimer() {
@@ -160,16 +160,16 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
         
         setLocation(location, boundaries, radius)
         
-         seconds = time
+        seconds = time
         // SET TIMER
         if timer.isValid == true {
-        timer.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+            timer.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         }
         
         // SET PLAYER COUNT
         playerNumber.text = "\(playerCount)"
-
+        
         
         // SET GEOFENCE
         
@@ -180,21 +180,21 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
             
             switch event {
             case .didEnteredRegion(let r):
-               print("good, \(r) is in region")
-                // SEND LOCATION TO SERVER
-                
+                print("good, \(r) is in region")
+            // SEND LOCATION TO SERVER
+            
             case .didExitedRegion(let r):
                 print("left the region!")
                 
             // SEND MESSAGE TO SERVER
             // REMOVE FROM GAME
-                
+            
             default:
                 break
-    
+                
             }
         }
-  
+        
         
         regionMaster = MKCoordinateRegion(center: location, span: boundaries)
     }
@@ -210,71 +210,79 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     
     @IBAction func getLocation(_ sender: UIButton) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-
-        if sender.currentImage == UIImage(systemName: "location") {
         
-        SwiftLocation.gpsLocation().then { (result) in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let loc):
-                DispatchQueue.main.async {
-                   let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-                    
-                    self.mapView.setRegion(region, animated: true)
-                    self.getLocButton.setImage(UIImage(systemName: "person.2"), for: .normal)
-                    
+        if sender.currentImage == UIImage(systemName: "location") {
+            
+            SwiftLocation.gpsLocation().then { (result) in
+                switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success(let loc):
+                    DispatchQueue.main.async {
+                        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+                        
+                        self.mapView.setRegion(region, animated: true)
+                        self.getLocButton.setImage(UIImage(systemName: "person.2"), for: .normal)
+                        
+                    }
                 }
             }
-        }
         } else {
-          
-            if regionMaster != nil {
-            mapView.setRegion(regionMaster!, animated: true)
             
-            self.getLocButton.setImage(UIImage(systemName: "location"), for: .normal)
+            if regionMaster != nil {
+                mapView.setRegion(regionMaster!, animated: true)
+                
+                self.getLocButton.setImage(UIImage(systemName: "location"), for: .normal)
+            } else {
+                self.getLocButton.setImage(UIImage(systemName: "location"), for: .normal)
+                
+                
+                
             }
         }
     }
     
     @IBAction func leaveButton(_ sender: Any) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-
+        
         let alertController = UIAlertController(title: "Leave Game", message: "Are you sure you would like to leave the game? This cannot be undone.", preferredStyle: .alert)
-                       let settingsAction = UIAlertAction(title: "Leave", style: .destructive) { (_) -> Void in
-                       
-                        // RUN COMMAND
-                        
-                       }
+        let settingsAction = UIAlertAction(title: "Leave", style: .destructive) { (_) -> Void in
+            
+            self.dismiss(animated: true) {
+                // RUN COMMAND
+                
+            }
+            
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                       alertController.addAction(cancelAction)
-                       alertController.addAction(settingsAction)
-                       DispatchQueue.main.async {
-                        self.present(alertController, animated: true, completion: nil)
-                        
-
-                       }
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+            
+            
+        }
         
         
         
     }
     
-
-// MARK: - PlayerLoss
-
-func playerLoss() {
-    // TELLS THEM THEY LOST, THEIR PLACE, TIME, KILLS
- 
     
- //   delegate?.gameEnded(players, timeString(time: seconds), kills)
-   dismiss(animated: true)
+    // MARK: - PlayerLoss
     
-    
-}
+    func playerLoss() {
+        // TELLS THEM THEY LOST, THEIR PLACE, TIME, KILLS
+        
+        
+        //   delegate?.gameEnded(players, timeString(time: seconds), kills)
+        dismiss(animated: true)
+        
+        
+    }
 }
 
 extension UIView {
-   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath

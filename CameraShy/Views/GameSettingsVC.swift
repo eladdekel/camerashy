@@ -128,6 +128,8 @@ class GameSettingsVC: UIViewController, PassingDataBack {
         if geoGo != nil {
             // SAVE AND SEND DATA TO SERVER
             
+            print(_POSIX2_PBS_ACCOUNTING)
+            
             let parameters: Parameters = [
                 "appleId": checkApple(),
                 "numPlayers": playerStepper.value,
@@ -143,18 +145,30 @@ class GameSettingsVC: UIViewController, PassingDataBack {
              ]
 
             
-            AF.request("http://camera-shy.space/api/createGame", method: .post, parameters: parameters).response {
+            AF.request("https://camera-shy.space/api/createGame", method: .post, parameters: parameters).response {
                 response in
                 print(response)
                 
             }
             // CALL THE NEXT VIEW WITH THE NEW DATA
+      
+                
+            dismiss(animated: true) {
+                NotificationCenter.default.post(name: NSNotification.Name("hostGameStart"), object: nil)
+
+                
+            }
+            
+           
+
+            
+            
             // DISMISS?
             
             
         } else {
             errorLabel.text = "Please select a location."
-            
+            print("test")
             
         }
     }
@@ -163,9 +177,9 @@ class GameSettingsVC: UIViewController, PassingDataBack {
         if segue.identifier == "toMap" {
             let destVC = segue.destination as! GameLocPickVC
             destVC.delegate = self
-            
-            
         }
+      
+        
     }
 
 }

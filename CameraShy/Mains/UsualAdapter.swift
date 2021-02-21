@@ -26,6 +26,15 @@ class UsualAdapter: UIViewController {
         addChild(contentView)
         view.addSubview(contentView.view)
         setupConstraints()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("openModule"), object: nil, queue: nil) { (_) in
+            self.presentingViewController?.dismiss(animated: true)
+            self.performSegue(withIdentifier: "gameOn", sender: nil)
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("hostGameStart"), object: nil, queue: nil) { (_) in
+            self.performSegue(withIdentifier: "hostGameStart", sender: nil)
+        }
+        
       //  lossNumber(2)  RUN LOSSNUMBER WHEN GAME ENDS
     }
     @objc func backgroundViewDidTap() {
@@ -89,6 +98,14 @@ class UsualAdapter: UIViewController {
     @objc func timeEnds() {
         UIView.animate(withDuration: 2) {
             self.awardView.alpha = 0
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "hostGameStart" {
+            let destvc = segue.destination as! WaitRoomAdapter
+            destvc.navigationController?.isNavigationBarHidden = true
+            destvc.host = true
         }
     }
     

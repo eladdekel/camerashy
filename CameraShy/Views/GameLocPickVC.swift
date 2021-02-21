@@ -64,7 +64,8 @@ class GameLocPickVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
                 delegate?.sendData(coordinates, zoom, CLLocationDistance(backupRadius))
                 
             }
-            _ = navigationController?.popViewController(animated: true)
+            
+            dismiss(animated: true)
 
             
         }
