@@ -37,6 +37,7 @@ class UsualAdapter: UIViewController, GameEndedDelegate {
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("createGame"), object: nil, queue: nil) { (_) in
+            print("creating")
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameSettingsVC") as! GameSettingsVC
             self.present(vc, animated: true)
           //  self.performSegue(withIdentifier: "createGame", sender: nil)
@@ -120,6 +121,7 @@ class UsualAdapter: UIViewController, GameEndedDelegate {
         if segue.identifier == "hostGameStart" {
             let destvc = segue.destination as! WaitRoomAdapter
             destvc.host = true
+            destvc.gameId = Singleton.shared.gameID!
         }
         if segue.identifier == "gameOn" {
             let destvc = segue.destination as! GameMechVC

@@ -76,3 +76,24 @@ struct GeoFence: Decodable {
     
     
 }
+
+
+struct OccPost: Decodable {
+    let gameId: String
+    let appleId: String
+    let loc: LatLong
+    
+    
+}
+
+struct LatLong: Decodable {
+    let lat: Double
+    let long: Double
+    
+}
+
+struct OtherLocs: Decodable {
+    
+    
+    
+}

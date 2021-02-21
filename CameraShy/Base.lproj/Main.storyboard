@@ -267,6 +267,7 @@
                     <connections>
                         <outlet property="doneButton" destination="9Ez-Nd-MMp" id="FY8-QU-WMH"/>
                         <outlet property="gameTitle" destination="8bp-Ry-4F5" id="szH-2D-KHt"/>
+                        <outlet property="imageView" destination="3Z4-hl-H9S" id="oH3-gl-WhU"/>
                         <outlet property="mainView" destination="qQT-uU-DFM" id="cb2-GU-q9d"/>
                         <outlet property="mapTitle" destination="thW-xV-M8b" id="cOO-c5-Jmj"/>
                         <outlet property="mapView" destination="qSX-AY-GxG" id="Gvx-Aw-cQD"/>

@@ -4,22 +4,14 @@
 //
 //  Created by Eric Zhang on 2021-02-20.
 //
-
 import SwiftUI
 
 struct Waitroom: View {
     var host: Bool
-       @State var pushBack = false
-       @State var pushForward = false
-       @Environment(\.presentationMode) var presentationMode
-       @State var gameId = "000000"
-       @ObservedObject var gameCode = GameCode()
-       
-       init(host: Bool) {
-           self.host = host
-           NotificationCenter.default.addObserver(self, selector: #selector(gameCode.loadList), name: NSNotification.Name(rawValue: "gameID"), object: nil)
-
-       }
+    var code: String
+    @State var pushBack = false
+    @State var pushForward = false
+    @Environment(\.presentationMode) var presentationMode
     
     
     var body: some View {
@@ -28,9 +20,7 @@ struct Waitroom: View {
             NavigationLink(destination: UsualMainView(), isActive: $pushBack) {
                 EmptyView()
             }
-            NavigationLink(destination: UsualMainView(), isActive: $pushForward) {
-                EmptyView()
-            }
+         
             
             VStack {
                 Text("Invite Your Friends")
@@ -47,19 +37,10 @@ struct Waitroom: View {
                     .foregroundColor(.white)
                 VStack {
                     HStack {
-                        Text(gameCode.code)
+                        Text(code)
                             .font(.system(size: 20, weight: .bold, design: .rounded))
                             .foregroundColor(.white)
-                            .onAppear {
-                                
-                                NotificationCenter.default.addObserver(forName: NSNotification.Name("gameId"), object: nil, queue: nil) { (_) in
-                                    
-                                }
-                                
-                                
-                                
-                            }
-                        
+
                     }
                     .padding(.horizontal, 30)
                     .padding(.vertical, 16)
@@ -68,8 +49,8 @@ struct Waitroom: View {
                 .clipShape(Capsule())
                 .padding(.top, 20)
                 .padding(.bottom, 50)
-                
-                
+
+                                
             }
             .padding(.top, 50)
             VStack {
@@ -87,9 +68,7 @@ struct Waitroom: View {
             .padding(.vertical, 20)
             if (host) {
                 Button(action: {
-                   // self.pushForward = true
                     NotificationCenter.default.post(name: NSNotification.Name("hostBeganGame"), object: nil)
-
                 }){
                     HStack {
                         Image(systemName: "paperplane.fill")
@@ -140,7 +119,7 @@ struct Waitroom: View {
             }
             else {
                 Button(action: {
-                    self.pushBack = true
+                    self.presentationMode.wrappedValue.dismiss()
                 }){
                     HStack {
                         Image(systemName: "hand.raised.slash")
@@ -171,25 +150,14 @@ struct Waitroom: View {
         .background(Color("MediumBlue").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
         .navigationBarBackButtonHidden(true)
     }
+    
+
+
 }
 
-class GameCode: ObservableObject {
-    @Published var code = "0000000"
-    @objc func loadList(notification: NSNotification) {
-        if let filebrought = notification.userInfo?["gameId"] as? String {
-            DispatchQueue.main.async {
-                self.code = filebrought
-                print("hello")
-            }
-        } else {
-            print("error!")
-            
-        }
-    }
-}
 
 struct Waitroom_Previews: PreviewProvider {
     static var previews: some View {
-        Waitroom(host: true)
+        Waitroom(host: true, code: "ABCDE")
     }
 }

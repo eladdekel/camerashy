@@ -11,6 +11,7 @@ import SwiftUI
 class WaitRoomAdapter: UIViewController {
 
     var host: Bool = false
+    var gameId: String = ""
     
   
 
@@ -21,7 +22,7 @@ class WaitRoomAdapter: UIViewController {
 
   
         
-        let contentView = UIHostingController(rootView: Waitroom(host: host))
+        let contentView = UIHostingController(rootView: Waitroom(host: host, code: gameId))
         
         // Do any additional setup after loading the view.
         addChild(contentView)

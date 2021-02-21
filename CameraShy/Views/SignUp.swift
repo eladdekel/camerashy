@@ -49,7 +49,7 @@ struct SignUp: View {
                         
                         UserDefaults().setValue(appleIDCredential.user, forKey: "AppleInfoUser")
                         UserDefaults().setValue(appleIDCredential.email, forKey: "AppleInfoEmail")
-                        
+                        UserDefaults().setValue(true, forKey: "isAppAlreadyConfigured")
                         print("worked!")
                         
                     default:

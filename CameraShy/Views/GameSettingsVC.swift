@@ -15,6 +15,7 @@ class GameSettingsVC: UIViewController, PassingDataBack {
     @IBOutlet weak var miniBack: UIView!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var gameTitle: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var timeLimitLabel: UILabel!
     @IBOutlet weak var timeStepper: UIStepper!
@@ -53,6 +54,7 @@ class GameSettingsVC: UIViewController, PassingDataBack {
         timeStepper.value = 1
         playerStepper.minimumValue = 3
         timeStepper.minimumValue = 1
+        imageView.layer.cornerRadius = 20
         timeStepper.maximumValue = 120
         playerStepper.maximumValue = 50
         playerLimitLabel.text = "\(Int(playerStepper.value)) players"
@@ -65,11 +67,12 @@ class GameSettingsVC: UIViewController, PassingDataBack {
         timeStepper.backgroundColor = UIColor(named: "ButtonColor")
         doneButton.layer.cornerRadius = 20
         
+        
         if Singleton.shared.teamName != nil {
             gameTitle.text = Singleton.shared.teamName
             
         } else {
-            gameTitle.text = "Settings"
+            gameTitle.text = "Create Game"
             
         }
         
@@ -122,24 +125,31 @@ class GameSettingsVC: UIViewController, PassingDataBack {
 
                 let newParm = GameCreator(appleId: appleID, numPlayers: Float(playerStepper.value), time: Float(timeStepper.value), gfence: fence)
                 
-                call.createGame(newParm)
+                dismiss(animated: true, completion: {
+                    self.call.createGame(newParm)
+
+                })
                 
+                
+               
             } else {
 
             print("error")
 
             }
+        
                 
-            dismiss(animated: true) {
-                NotificationCenter.default.post(name: NSNotification.Name("hostGameStart"), object: nil)
-                
-            }
+            
             
             
         } else {
             print("test")
             
         }
+        
+        
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

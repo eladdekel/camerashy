@@ -28,14 +28,13 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var backViewSecondLabel: UILabel!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var countdownLabel: UILabel!
-    var trueLocation: GPSLocationRequest.ProducedData?
-    var Users: [User] = []
     var seconds: Double = 0
     var isTimerRunning = false
     var timer = Timer()
     var timer2 = Timer()
     var delegate: GameEndedDelegate?
     var regionMaster: MKCoordinateRegion?
+    let call = CallingHandlers()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +44,10 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
         countdownLabel.text = "\(timeString(time: seconds))"
         prepSwiftUI()
         NotificationCenter.default.addObserver(self, selector: #selector(loadKills), name: NSNotification.Name(rawValue: "headShot"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(plotUsers), name: NSNotification.Name(rawValue: "userUpdates"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gameInfoFunc), name: NSNotification.Name(rawValue: "gameInfo"), object: nil)
+
+
 
         // RUN SET LOCATION WITH THE DATA
         // START PLOTTING USERS
@@ -76,37 +79,60 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
         
         
         backView.alpha = 0
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        var aID: String?
         
+        if let appleID = UserDefaults().string(forKey: "AppleInfoUser") {
+            aID = appleID
+            
+        }
         
+        SwiftLocation.gpsLocation().then { (result) in
+            switch result {
+            case .success(let newData):
+                
+                DispatchQueue.main.async {
+                    let tester: OccPost = OccPost(gameId: Singleton.shared.gameID!, appleId: aID!, loc: LatLong(lat: newData.coordinate.latitude, long: newData.coordinate.longitude))
+                    self.call.occasionalPost(tester)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                
+                
+            }
+        }
         
-        //        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemMaterialDark)
-        //        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        //        blurEffectView.frame = bottomView.bounds
-        //        blurEffectView.backgroundColor = UIColor(named: "MediumBlue")
-        //        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        //        bottomView.addSubview(blurEffectView)
-        //        bottomView.sendSubviewToBack(blurEffectView)
+      
     }
     
     // MARK: - Plots Users
     
-    func plotUsers() {
-        for user in Users {
+    @objc func plotUsers(notification: NSNotification) {
+        if let filebrought = notification.userInfo?["userUpdates"] as? [LatLong] {
+        
+        
+        for user in filebrought {
             
             for x in mapView.annotations {
-                if x.title == "\(user.name)" {
                     mapView.removeAnnotation(x)
-                }
             }
+            
             let playerPoint = MKPointAnnotation()
-            playerPoint.title = "\(user.name)"
-            playerPoint.coordinate = user.location
+            playerPoint.coordinate = CLLocationCoordinate2D(latitude: user.lat, longitude: user.long)
             mapView.addAnnotation(playerPoint)
         }
         
         
-        playerNumber.text = "\(Users.count)"
+        playerNumber.text = "\(filebrought.count)"
         
+        } else {
+            print("error in plotting users")
+            
+            
+        }
     }
     
     // MARK: - Draws Radius
@@ -165,7 +191,29 @@ class GameMechVC: UIViewController, MKMapViewDelegate {
     
     // MARK: - Game Began Function
     
+    @objc func gameInfoFunc(notification: NSNotification) {
+            if let filebrought = notification.userInfo?["gameInfo"] as? GameCreator {
+            
+                let location = CLLocationCoordinate2D(latitude: Double(filebrought.gfence.lat), longitude: Double(filebrought.gfence.long))
+                let boundaries = MKCoordinateSpan(latitudeDelta: Double(filebrought.gfence.bound[0]), longitudeDelta: Double(filebrought.gfence.bound[1]))
+                
+                gameBegan(location: location, boundaries: boundaries, radius: Double(filebrought.gfence.rad), time: Double(filebrought.time), playerCount: Double(filebrought.numPlayers))
+                
+                
+            } else {
+                
+                print("error getting game starting data")
+            }
+        
+        
+    }
+    
+    
+    
+    
     func gameBegan(location: CLLocationCoordinate2D, boundaries: MKCoordinateSpan, radius: Double, time: Double, playerCount: Double) {
+        
+        
         
         setLocation(location, boundaries, radius)
         
